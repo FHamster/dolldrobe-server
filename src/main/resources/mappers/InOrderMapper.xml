@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.InOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.InOrder" >
+    <constructor >
+      <idArg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="I_TotalMoney" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="I_Group" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="I_Pay" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="I_BeginTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="I_CancelTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="I_TransTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    I_Id, I_TotalMoney, I_Group, I_Pay, I_BeginTime, I_CancelTime, I_TransTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.InOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from inorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from inorder
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from inorder
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.InOrderExample" >
+    delete from inorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.InOrder" >
+    insert into inorder (I_Id, I_TotalMoney, I_Group, 
+      I_Pay, I_BeginTime, I_CancelTime, 
+      I_TransTime)
+    values (#{iId,jdbcType=VARCHAR}, #{iTotalmoney,jdbcType=REAL}, #{iGroup,jdbcType=TINYINT}, 
+      #{iPay,jdbcType=TINYINT}, #{iBegintime,jdbcType=TIMESTAMP}, #{iCanceltime,jdbcType=TIMESTAMP}, 
+      #{iTranstime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.InOrder" >
+    insert into inorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        I_Id,
+      </if>
+      <if test="iTotalmoney != null" >
+        I_TotalMoney,
+      </if>
+      <if test="iGroup != null" >
+        I_Group,
+      </if>
+      <if test="iPay != null" >
+        I_Pay,
+      </if>
+      <if test="iBegintime != null" >
+        I_BeginTime,
+      </if>
+      <if test="iCanceltime != null" >
+        I_CancelTime,
+      </if>
+      <if test="iTranstime != null" >
+        I_TransTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="iTotalmoney != null" >
+        #{iTotalmoney,jdbcType=REAL},
+      </if>
+      <if test="iGroup != null" >
+        #{iGroup,jdbcType=TINYINT},
+      </if>
+      <if test="iPay != null" >
+        #{iPay,jdbcType=TINYINT},
+      </if>
+      <if test="iBegintime != null" >
+        #{iBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iCanceltime != null" >
+        #{iCanceltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iTranstime != null" >
+        #{iTranstime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.InOrderExample" resultType="java.lang.Integer" >
+    select count(*) from inorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update inorder
+    <set >
+      <if test="record.iId != null" >
+        I_Id = #{record.iId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iTotalmoney != null" >
+        I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
+      </if>
+      <if test="record.iGroup != null" >
+        I_Group = #{record.iGroup,jdbcType=TINYINT},
+      </if>
+      <if test="record.iPay != null" >
+        I_Pay = #{record.iPay,jdbcType=TINYINT},
+      </if>
+      <if test="record.iBegintime != null" >
+        I_BeginTime = #{record.iBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.iCanceltime != null" >
+        I_CancelTime = #{record.iCanceltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.iTranstime != null" >
+        I_TransTime = #{record.iTranstime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update inorder
+    set I_Id = #{record.iId,jdbcType=VARCHAR},
+      I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
+      I_Group = #{record.iGroup,jdbcType=TINYINT},
+      I_Pay = #{record.iPay,jdbcType=TINYINT},
+      I_BeginTime = #{record.iBegintime,jdbcType=TIMESTAMP},
+      I_CancelTime = #{record.iCanceltime,jdbcType=TIMESTAMP},
+      I_TransTime = #{record.iTranstime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.InOrder" >
+    update inorder
+    <set >
+      <if test="iTotalmoney != null" >
+        I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
+      </if>
+      <if test="iGroup != null" >
+        I_Group = #{iGroup,jdbcType=TINYINT},
+      </if>
+      <if test="iPay != null" >
+        I_Pay = #{iPay,jdbcType=TINYINT},
+      </if>
+      <if test="iBegintime != null" >
+        I_BeginTime = #{iBegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iCanceltime != null" >
+        I_CancelTime = #{iCanceltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="iTranstime != null" >
+        I_TransTime = #{iTranstime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.InOrder" >
+    update inorder
+    set I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
+      I_Group = #{iGroup,jdbcType=TINYINT},
+      I_Pay = #{iPay,jdbcType=TINYINT},
+      I_BeginTime = #{iBegintime,jdbcType=TIMESTAMP},
+      I_CancelTime = #{iCanceltime,jdbcType=TIMESTAMP},
+      I_TransTime = #{iTranstime,jdbcType=TIMESTAMP}
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </update>
+</mapper>

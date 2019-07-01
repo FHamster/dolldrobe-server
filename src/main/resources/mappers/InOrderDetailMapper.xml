@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.InOrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.InOrderDetail" >
+    <constructor >
+      <idArg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IOD_PayTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    I_Id, S_Num, IOD_PayTime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.InOrderDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from inorderdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from inorderdetail
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from inorderdetail
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.InOrderDetailExample" >
+    delete from inorderdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.InOrderDetail" >
+    insert into inorderdetail (I_Id, S_Num, IOD_PayTime
+      )
+    values (#{iId,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{iodPaytime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.InOrderDetail" >
+    insert into inorderdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        I_Id,
+      </if>
+      <if test="sNum != null" >
+        S_Num,
+      </if>
+      <if test="iodPaytime != null" >
+        IOD_PayTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iId != null" >
+        #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="iodPaytime != null" >
+        #{iodPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.InOrderDetailExample" resultType="java.lang.Integer" >
+    select count(*) from inorderdetail
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update inorderdetail
+    <set >
+      <if test="record.iId != null" >
+        I_Id = #{record.iId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sNum != null" >
+        S_Num = #{record.sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iodPaytime != null" >
+        IOD_PayTime = #{record.iodPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update inorderdetail
+    set I_Id = #{record.iId,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR},
+      IOD_PayTime = #{record.iodPaytime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.InOrderDetail" >
+    update inorderdetail
+    <set >
+      <if test="sNum != null" >
+        S_Num = #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="iodPaytime != null" >
+        IOD_PayTime = #{iodPaytime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.InOrderDetail" >
+    update inorderdetail
+    set S_Num = #{sNum,jdbcType=VARCHAR},
+      IOD_PayTime = #{iodPaytime,jdbcType=TIMESTAMP}
+    where I_Id = #{iId,jdbcType=VARCHAR}
+  </update>
+</mapper>

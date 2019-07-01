@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.SketchPicMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.SketchPic" >
+    <constructor >
+      <idArg column="SP_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.SketchPic" >
+    <constructor >
+      <idArg column="SP_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SP_url" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SP_Id, S_Num
+  </sql>
+  <sql id="Blob_Column_List" >
+    SP_url
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fhamster.dolldrobe.model.SketchPicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sketchpic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.SketchPicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sketchpic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sketchpic
+    where SP_Id = #{spId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sketchpic
+    where SP_Id = #{spId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.SketchPicExample" >
+    delete from sketchpic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.SketchPic" >
+    insert into sketchpic (SP_Id, S_Num, SP_url
+      )
+    values (#{spId,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{spUrl,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.SketchPic" >
+    insert into sketchpic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="spId != null" >
+        SP_Id,
+      </if>
+      <if test="sNum != null" >
+        S_Num,
+      </if>
+      <if test="spUrl != null" >
+        SP_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="spId != null" >
+        #{spId,jdbcType=VARCHAR},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="spUrl != null" >
+        #{spUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.SketchPicExample" resultType="java.lang.Integer" >
+    select count(*) from sketchpic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sketchpic
+    <set >
+      <if test="record.spId != null" >
+        SP_Id = #{record.spId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sNum != null" >
+        S_Num = #{record.sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.spUrl != null" >
+        SP_url = #{record.spUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sketchpic
+    set SP_Id = #{record.spId,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR},
+      SP_url = #{record.spUrl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sketchpic
+    set SP_Id = #{record.spId,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.SketchPic" >
+    update sketchpic
+    <set >
+      <if test="sNum != null" >
+        S_Num = #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="spUrl != null" >
+        SP_url = #{spUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where SP_Id = #{spId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fhamster.dolldrobe.model.SketchPic" >
+    update sketchpic
+    set S_Num = #{sNum,jdbcType=VARCHAR},
+      SP_url = #{spUrl,jdbcType=LONGVARCHAR}
+    where SP_Id = #{spId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.SketchPic" >
+    update sketchpic
+    set S_Num = #{sNum,jdbcType=VARCHAR}
+    where SP_Id = #{spId,jdbcType=VARCHAR}
+  </update>
+</mapper>

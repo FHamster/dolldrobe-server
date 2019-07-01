@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.SketchSamplelFeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    <constructor >
+      <idArg column="SSF_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SSF_Category" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SSF_EvaluationLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SSF_Date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    <constructor >
+      <idArg column="SSF_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SSF_Category" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SSF_EvaluationLevel" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SSF_Date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SSF_EvaluationContent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SSF_Id, S_Num, U_AccountNumber, SSF_Category, SSF_EvaluationLevel, SSF_Date
+  </sql>
+  <sql id="Blob_Column_List" >
+    SSF_EvaluationContent
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedbackExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sketch_samplel_feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedbackExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sketch_samplel_feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sketch_samplel_feedback
+    where SSF_Id = #{ssfId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sketch_samplel_feedback
+    where SSF_Id = #{ssfId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedbackExample" >
+    delete from sketch_samplel_feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    insert into sketch_samplel_feedback (SSF_Id, S_Num, U_AccountNumber, 
+      SSF_Category, SSF_EvaluationLevel, SSF_Date, 
+      SSF_EvaluationContent)
+    values (#{ssfId,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, 
+      #{ssfCategory,jdbcType=VARCHAR}, #{ssfEvaluationlevel,jdbcType=INTEGER}, #{ssfDate,jdbcType=TIMESTAMP}, 
+      #{ssfEvaluationcontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    insert into sketch_samplel_feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ssfId != null" >
+        SSF_Id,
+      </if>
+      <if test="sNum != null" >
+        S_Num,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
+      </if>
+      <if test="ssfCategory != null" >
+        SSF_Category,
+      </if>
+      <if test="ssfEvaluationlevel != null" >
+        SSF_EvaluationLevel,
+      </if>
+      <if test="ssfDate != null" >
+        SSF_Date,
+      </if>
+      <if test="ssfEvaluationcontent != null" >
+        SSF_EvaluationContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ssfId != null" >
+        #{ssfId,jdbcType=VARCHAR},
+      </if>
+      <if test="sNum != null" >
+        #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfCategory != null" >
+        #{ssfCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfEvaluationlevel != null" >
+        #{ssfEvaluationlevel,jdbcType=INTEGER},
+      </if>
+      <if test="ssfDate != null" >
+        #{ssfDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ssfEvaluationcontent != null" >
+        #{ssfEvaluationcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedbackExample" resultType="java.lang.Integer" >
+    select count(*) from sketch_samplel_feedback
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sketch_samplel_feedback
+    <set >
+      <if test="record.ssfId != null" >
+        SSF_Id = #{record.ssfId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sNum != null" >
+        S_Num = #{record.sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssfCategory != null" >
+        SSF_Category = #{record.ssfCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssfEvaluationlevel != null" >
+        SSF_EvaluationLevel = #{record.ssfEvaluationlevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.ssfDate != null" >
+        SSF_Date = #{record.ssfDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ssfEvaluationcontent != null" >
+        SSF_EvaluationContent = #{record.ssfEvaluationcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sketch_samplel_feedback
+    set SSF_Id = #{record.ssfId,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      SSF_Category = #{record.ssfCategory,jdbcType=VARCHAR},
+      SSF_EvaluationLevel = #{record.ssfEvaluationlevel,jdbcType=INTEGER},
+      SSF_Date = #{record.ssfDate,jdbcType=TIMESTAMP},
+      SSF_EvaluationContent = #{record.ssfEvaluationcontent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sketch_samplel_feedback
+    set SSF_Id = #{record.ssfId,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      SSF_Category = #{record.ssfCategory,jdbcType=VARCHAR},
+      SSF_EvaluationLevel = #{record.ssfEvaluationlevel,jdbcType=INTEGER},
+      SSF_Date = #{record.ssfDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    update sketch_samplel_feedback
+    <set >
+      <if test="sNum != null" >
+        S_Num = #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfCategory != null" >
+        SSF_Category = #{ssfCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="ssfEvaluationlevel != null" >
+        SSF_EvaluationLevel = #{ssfEvaluationlevel,jdbcType=INTEGER},
+      </if>
+      <if test="ssfDate != null" >
+        SSF_Date = #{ssfDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ssfEvaluationcontent != null" >
+        SSF_EvaluationContent = #{ssfEvaluationcontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where SSF_Id = #{ssfId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    update sketch_samplel_feedback
+    set S_Num = #{sNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      SSF_Category = #{ssfCategory,jdbcType=VARCHAR},
+      SSF_EvaluationLevel = #{ssfEvaluationlevel,jdbcType=INTEGER},
+      SSF_Date = #{ssfDate,jdbcType=TIMESTAMP},
+      SSF_EvaluationContent = #{ssfEvaluationcontent,jdbcType=LONGVARCHAR}
+    where SSF_Id = #{ssfId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.SketchSamplelFeedback" >
+    update sketch_samplel_feedback
+    set S_Num = #{sNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      SSF_Category = #{ssfCategory,jdbcType=VARCHAR},
+      SSF_EvaluationLevel = #{ssfEvaluationlevel,jdbcType=INTEGER},
+      SSF_Date = #{ssfDate,jdbcType=TIMESTAMP}
+    where SSF_Id = #{ssfId,jdbcType=VARCHAR}
+  </update>
+</mapper>

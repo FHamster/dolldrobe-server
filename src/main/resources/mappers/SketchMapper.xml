@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.SketchMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.Sketch" >
+    <constructor >
+      <idArg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_CTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="S_State" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="S_Pageview" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    S_Num, U_AccountNumber, S_Name, S_CTime, S_State, S_Pageview
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.SketchExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sketch
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sketch
+    where S_Num = #{sNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sketch
+    where S_Num = #{sNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.SketchExample" >
+    delete from sketch
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Sketch" >
+    insert into sketch (S_Num, U_AccountNumber, S_Name, 
+      S_CTime, S_State, S_Pageview
+      )
+    values (#{sNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{sName,jdbcType=VARCHAR}, 
+      #{sCtime,jdbcType=TIMESTAMP}, #{sState,jdbcType=INTEGER}, #{sPageview,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Sketch" >
+    insert into sketch
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sNum != null" >
+        S_Num,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
+      </if>
+      <if test="sName != null" >
+        S_Name,
+      </if>
+      <if test="sCtime != null" >
+        S_CTime,
+      </if>
+      <if test="sState != null" >
+        S_State,
+      </if>
+      <if test="sPageview != null" >
+        S_Pageview,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sNum != null" >
+        #{sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCtime != null" >
+        #{sCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sState != null" >
+        #{sState,jdbcType=INTEGER},
+      </if>
+      <if test="sPageview != null" >
+        #{sPageview,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.SketchExample" resultType="java.lang.Integer" >
+    select count(*) from sketch
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sketch
+    <set >
+      <if test="record.sNum != null" >
+        S_Num = #{record.sNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sName != null" >
+        S_Name = #{record.sName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sCtime != null" >
+        S_CTime = #{record.sCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sState != null" >
+        S_State = #{record.sState,jdbcType=INTEGER},
+      </if>
+      <if test="record.sPageview != null" >
+        S_Pageview = #{record.sPageview,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sketch
+    set S_Num = #{record.sNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      S_Name = #{record.sName,jdbcType=VARCHAR},
+      S_CTime = #{record.sCtime,jdbcType=TIMESTAMP},
+      S_State = #{record.sState,jdbcType=INTEGER},
+      S_Pageview = #{record.sPageview,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.Sketch" >
+    update sketch
+    <set >
+      <if test="uAccountnumber != null" >
+        U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="sName != null" >
+        S_Name = #{sName,jdbcType=VARCHAR},
+      </if>
+      <if test="sCtime != null" >
+        S_CTime = #{sCtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sState != null" >
+        S_State = #{sState,jdbcType=INTEGER},
+      </if>
+      <if test="sPageview != null" >
+        S_Pageview = #{sPageview,jdbcType=BIGINT},
+      </if>
+    </set>
+    where S_Num = #{sNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Sketch" >
+    update sketch
+    set U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      S_Name = #{sName,jdbcType=VARCHAR},
+      S_CTime = #{sCtime,jdbcType=TIMESTAMP},
+      S_State = #{sState,jdbcType=INTEGER},
+      S_Pageview = #{sPageview,jdbcType=BIGINT}
+    where S_Num = #{sNum,jdbcType=VARCHAR}
+  </update>
+</mapper>

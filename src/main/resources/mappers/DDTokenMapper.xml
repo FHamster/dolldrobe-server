@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.DDTokenMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.DDToken" >
+    <constructor >
+      <idArg column="tokenId" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_right" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tokenId, U_AccountNumber, U_right
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.DDTokenExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from token
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from token
+    where tokenId = #{tokenid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from token
+    where tokenId = #{tokenid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.DDTokenExample" >
+    delete from token
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.DDToken" >
+    insert into token (tokenId, U_AccountNumber, U_right
+      )
+    values (#{tokenid,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{uRight,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.DDToken" >
+    insert into token
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tokenid != null" >
+        tokenId,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
+      </if>
+      <if test="uRight != null" >
+        U_right,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tokenid != null" >
+        #{tokenid,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="uRight != null" >
+        #{uRight,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.DDTokenExample" resultType="java.lang.Integer" >
+    select count(*) from token
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update token
+    <set >
+      <if test="record.tokenid != null" >
+        tokenId = #{record.tokenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uRight != null" >
+        U_right = #{record.uRight,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update token
+    set tokenId = #{record.tokenid,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      U_right = #{record.uRight,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.DDToken" >
+    update token
+    <set >
+      <if test="uAccountnumber != null" >
+        U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="uRight != null" >
+        U_right = #{uRight,jdbcType=INTEGER},
+      </if>
+    </set>
+    where tokenId = #{tokenid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.DDToken" >
+    update token
+    set U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      U_right = #{uRight,jdbcType=INTEGER}
+    where tokenId = #{tokenid,jdbcType=VARCHAR}
+  </update>
+</mapper>

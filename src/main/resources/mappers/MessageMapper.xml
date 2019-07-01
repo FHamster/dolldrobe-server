@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.MessageMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.Message" >
+    <constructor >
+      <idArg column="Use_U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <idArg column="M_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="M_SendTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="M_SentContent" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Use_U_AccountNumber, U_AccountNumber, M_Num, M_SendTime, M_SentContent
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.MessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.MessageKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+      and M_Num = #{mNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.MessageKey" >
+    delete from message
+    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+      and M_Num = #{mNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.MessageExample" >
+    delete from message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Message" >
+    insert into message (Use_U_AccountNumber, U_AccountNumber, 
+      M_Num, M_SendTime, M_SentContent
+      )
+    values (#{useUAccountnumber,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, 
+      #{mNum,jdbcType=VARCHAR}, #{mSendtime,jdbcType=TIMESTAMP}, #{mSentcontent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Message" >
+    insert into message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="useUAccountnumber != null" >
+        Use_U_AccountNumber,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
+      </if>
+      <if test="mNum != null" >
+        M_Num,
+      </if>
+      <if test="mSendtime != null" >
+        M_SendTime,
+      </if>
+      <if test="mSentcontent != null" >
+        M_SentContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="useUAccountnumber != null" >
+        #{useUAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="mNum != null" >
+        #{mNum,jdbcType=VARCHAR},
+      </if>
+      <if test="mSendtime != null" >
+        #{mSendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mSentcontent != null" >
+        #{mSentcontent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.MessageExample" resultType="java.lang.Integer" >
+    select count(*) from message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update message
+    <set >
+      <if test="record.useUAccountnumber != null" >
+        Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mNum != null" >
+        M_Num = #{record.mNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mSendtime != null" >
+        M_SendTime = #{record.mSendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mSentcontent != null" >
+        M_SentContent = #{record.mSentcontent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update message
+    set Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      M_Num = #{record.mNum,jdbcType=VARCHAR},
+      M_SendTime = #{record.mSendtime,jdbcType=TIMESTAMP},
+      M_SentContent = #{record.mSentcontent,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.Message" >
+    update message
+    <set >
+      <if test="mSendtime != null" >
+        M_SendTime = #{mSendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mSentcontent != null" >
+        M_SentContent = #{mSentcontent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+      and M_Num = #{mNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Message" >
+    update message
+    set M_SendTime = #{mSendtime,jdbcType=TIMESTAMP},
+      M_SentContent = #{mSentcontent,jdbcType=VARCHAR}
+    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+      and M_Num = #{mNum,jdbcType=VARCHAR}
+  </update>
+</mapper>

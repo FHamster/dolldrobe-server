@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.DesignerMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.Designer" >
+    <constructor >
+      <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Passwor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="D_Attention" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="D_WorkNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.Designer" >
+    <constructor >
+      <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Passwor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="D_Attention" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="D_WorkNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="U_PicUrl" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    U_AccountNumber, I_Id, U_Name, U_Passwor, U_Sex, U_Email, U_QQ, U_WX, D_Attention, 
+    D_WorkNum
+  </sql>
+  <sql id="Blob_Column_List" >
+    U_PicUrl
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fhamster.dolldrobe.model.DesignerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from designer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.DesignerExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from designer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from designer
+    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from designer
+    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.DesignerExample" >
+    delete from designer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Designer" >
+    insert into designer (U_AccountNumber, I_Id, U_Name, 
+      U_Passwor, U_Sex, U_Email, 
+      U_QQ, U_WX, D_Attention, 
+      D_WorkNum, U_PicUrl)
+    values (#{uAccountnumber,jdbcType=VARCHAR}, #{iId,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
+      #{uPasswor,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
+      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{dAttention,jdbcType=INTEGER}, 
+      #{dWorknum,jdbcType=INTEGER}, #{uPicurl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Designer" >
+    insert into designer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
+      </if>
+      <if test="iId != null" >
+        I_Id,
+      </if>
+      <if test="uName != null" >
+        U_Name,
+      </if>
+      <if test="uPasswor != null" >
+        U_Passwor,
+      </if>
+      <if test="uSex != null" >
+        U_Sex,
+      </if>
+      <if test="uEmail != null" >
+        U_Email,
+      </if>
+      <if test="uQq != null" >
+        U_QQ,
+      </if>
+      <if test="uWx != null" >
+        U_WX,
+      </if>
+      <if test="dAttention != null" >
+        D_Attention,
+      </if>
+      <if test="dWorknum != null" >
+        D_WorkNum,
+      </if>
+      <if test="uPicurl != null" >
+        U_PicUrl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="iId != null" >
+        #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null" >
+        #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPasswor != null" >
+        #{uPasswor,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null" >
+        #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uEmail != null" >
+        #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uQq != null" >
+        #{uQq,jdbcType=VARCHAR},
+      </if>
+      <if test="uWx != null" >
+        #{uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="dAttention != null" >
+        #{dAttention,jdbcType=INTEGER},
+      </if>
+      <if test="dWorknum != null" >
+        #{dWorknum,jdbcType=INTEGER},
+      </if>
+      <if test="uPicurl != null" >
+        #{uPicurl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.DesignerExample" resultType="java.lang.Integer" >
+    select count(*) from designer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update designer
+    <set >
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iId != null" >
+        I_Id = #{record.iId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uName != null" >
+        U_Name = #{record.uName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uPasswor != null" >
+        U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uSex != null" >
+        U_Sex = #{record.uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uEmail != null" >
+        U_Email = #{record.uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uQq != null" >
+        U_QQ = #{record.uQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uWx != null" >
+        U_WX = #{record.uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dAttention != null" >
+        D_Attention = #{record.dAttention,jdbcType=INTEGER},
+      </if>
+      <if test="record.dWorknum != null" >
+        D_WorkNum = #{record.dWorknum,jdbcType=INTEGER},
+      </if>
+      <if test="record.uPicurl != null" >
+        U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update designer
+    set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      I_Id = #{record.iId,jdbcType=VARCHAR},
+      U_Name = #{record.uName,jdbcType=VARCHAR},
+      U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      U_Sex = #{record.uSex,jdbcType=VARCHAR},
+      U_Email = #{record.uEmail,jdbcType=VARCHAR},
+      U_QQ = #{record.uQq,jdbcType=VARCHAR},
+      U_WX = #{record.uWx,jdbcType=VARCHAR},
+      D_Attention = #{record.dAttention,jdbcType=INTEGER},
+      D_WorkNum = #{record.dWorknum,jdbcType=INTEGER},
+      U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update designer
+    set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      I_Id = #{record.iId,jdbcType=VARCHAR},
+      U_Name = #{record.uName,jdbcType=VARCHAR},
+      U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      U_Sex = #{record.uSex,jdbcType=VARCHAR},
+      U_Email = #{record.uEmail,jdbcType=VARCHAR},
+      U_QQ = #{record.uQq,jdbcType=VARCHAR},
+      U_WX = #{record.uWx,jdbcType=VARCHAR},
+      D_Attention = #{record.dAttention,jdbcType=INTEGER},
+      D_WorkNum = #{record.dWorknum,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.Designer" >
+    update designer
+    <set >
+      <if test="iId != null" >
+        I_Id = #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="uName != null" >
+        U_Name = #{uName,jdbcType=VARCHAR},
+      </if>
+      <if test="uPasswor != null" >
+        U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      </if>
+      <if test="uSex != null" >
+        U_Sex = #{uSex,jdbcType=VARCHAR},
+      </if>
+      <if test="uEmail != null" >
+        U_Email = #{uEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="uQq != null" >
+        U_QQ = #{uQq,jdbcType=VARCHAR},
+      </if>
+      <if test="uWx != null" >
+        U_WX = #{uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="dAttention != null" >
+        D_Attention = #{dAttention,jdbcType=INTEGER},
+      </if>
+      <if test="dWorknum != null" >
+        D_WorkNum = #{dWorknum,jdbcType=INTEGER},
+      </if>
+      <if test="uPicurl != null" >
+        U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fhamster.dolldrobe.model.Designer" >
+    update designer
+    set I_Id = #{iId,jdbcType=VARCHAR},
+      U_Name = #{uName,jdbcType=VARCHAR},
+      U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      U_Sex = #{uSex,jdbcType=VARCHAR},
+      U_Email = #{uEmail,jdbcType=VARCHAR},
+      U_QQ = #{uQq,jdbcType=VARCHAR},
+      U_WX = #{uWx,jdbcType=VARCHAR},
+      D_Attention = #{dAttention,jdbcType=INTEGER},
+      D_WorkNum = #{dWorknum,jdbcType=INTEGER},
+      U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR}
+    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Designer" >
+    update designer
+    set I_Id = #{iId,jdbcType=VARCHAR},
+      U_Name = #{uName,jdbcType=VARCHAR},
+      U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      U_Sex = #{uSex,jdbcType=VARCHAR},
+      U_Email = #{uEmail,jdbcType=VARCHAR},
+      U_QQ = #{uQq,jdbcType=VARCHAR},
+      U_WX = #{uWx,jdbcType=VARCHAR},
+      D_Attention = #{dAttention,jdbcType=INTEGER},
+      D_WorkNum = #{dWorknum,jdbcType=INTEGER}
+    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

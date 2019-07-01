@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fhamster.dolldrobe.dao.DetailIOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.DetailIOrder" >
+    <constructor >
+      <idArg column="O_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SKU_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DO_Num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DO_DiscountAmount" jdbcType="REAL" javaType="java.lang.Float" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    O_Num, SKU_Id, DO_Num, DO_DiscountAmount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.DetailIOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from detailiorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from detailiorder
+    where O_Num = #{oNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from detailiorder
+    where O_Num = #{oNum,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.DetailIOrderExample" >
+    delete from detailiorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
+    insert into detailiorder (O_Num, SKU_Id, DO_Num, 
+      DO_DiscountAmount)
+    values (#{oNum,jdbcType=VARCHAR}, #{skuId,jdbcType=VARCHAR}, #{doNum,jdbcType=INTEGER}, 
+      #{doDiscountamount,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
+    insert into detailiorder
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oNum != null" >
+        O_Num,
+      </if>
+      <if test="skuId != null" >
+        SKU_Id,
+      </if>
+      <if test="doNum != null" >
+        DO_Num,
+      </if>
+      <if test="doDiscountamount != null" >
+        DO_DiscountAmount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oNum != null" >
+        #{oNum,jdbcType=VARCHAR},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="doNum != null" >
+        #{doNum,jdbcType=INTEGER},
+      </if>
+      <if test="doDiscountamount != null" >
+        #{doDiscountamount,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fhamster.dolldrobe.model.DetailIOrderExample" resultType="java.lang.Integer" >
+    select count(*) from detailiorder
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update detailiorder
+    <set >
+      <if test="record.oNum != null" >
+        O_Num = #{record.oNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skuId != null" >
+        SKU_Id = #{record.skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doNum != null" >
+        DO_Num = #{record.doNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.doDiscountamount != null" >
+        DO_DiscountAmount = #{record.doDiscountamount,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update detailiorder
+    set O_Num = #{record.oNum,jdbcType=VARCHAR},
+      SKU_Id = #{record.skuId,jdbcType=VARCHAR},
+      DO_Num = #{record.doNum,jdbcType=INTEGER},
+      DO_DiscountAmount = #{record.doDiscountamount,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
+    update detailiorder
+    <set >
+      <if test="skuId != null" >
+        SKU_Id = #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="doNum != null" >
+        DO_Num = #{doNum,jdbcType=INTEGER},
+      </if>
+      <if test="doDiscountamount != null" >
+        DO_DiscountAmount = #{doDiscountamount,jdbcType=REAL},
+      </if>
+    </set>
+    where O_Num = #{oNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
+    update detailiorder
+    set SKU_Id = #{skuId,jdbcType=VARCHAR},
+      DO_Num = #{doNum,jdbcType=INTEGER},
+      DO_DiscountAmount = #{doDiscountamount,jdbcType=REAL}
+    where O_Num = #{oNum,jdbcType=VARCHAR}
+  </update>
+</mapper>
