@@ -7,7 +7,7 @@ public class Designer {
 
     private String uName;
 
-    private String uPasswor;
+    private String uPsw;
 
     private String uSex;
 
@@ -17,21 +17,24 @@ public class Designer {
 
     private String uWx;
 
+    private String uTel;
+
     private Integer dAttention;
 
     private Integer dWorknum;
 
     private String uPicurl;
 
-    public Designer(String uAccountnumber, String iId, String uName, String uPasswor, String uSex, String uEmail, String uQq, String uWx, Integer dAttention, Integer dWorknum, String uPicurl) {
+    public Designer(String uAccountnumber, String iId, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, Integer dAttention, Integer dWorknum, String uPicurl) {
         this.uAccountnumber = uAccountnumber;
         this.iId = iId;
         this.uName = uName;
-        this.uPasswor = uPasswor;
+        this.uPsw = uPsw;
         this.uSex = uSex;
         this.uEmail = uEmail;
         this.uQq = uQq;
         this.uWx = uWx;
+        this.uTel = uTel;
         this.dAttention = dAttention;
         this.dWorknum = dWorknum;
         this.uPicurl = uPicurl;
@@ -65,12 +68,12 @@ public class Designer {
         this.uName = uName == null ? null : uName.trim();
     }
 
-    public String getuPasswor() {
-        return uPasswor;
+    public String getuPsw() {
+        return uPsw;
     }
 
-    public void setuPasswor(String uPasswor) {
-        this.uPasswor = uPasswor == null ? null : uPasswor.trim();
+    public void setuPsw(String uPsw) {
+        this.uPsw = uPsw == null ? null : uPsw.trim();
     }
 
     public String getuSex() {
@@ -103,6 +106,14 @@ public class Designer {
 
     public void setuWx(String uWx) {
         this.uWx = uWx == null ? null : uWx.trim();
+    }
+
+    public String getuTel() {
+        return uTel;
+    }
+
+    public void setuTel(String uTel) {
+        this.uTel = uTel == null ? null : uTel.trim();
     }
 
     public Integer getdAttention() {

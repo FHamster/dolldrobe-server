@@ -2,37 +2,16 @@ package com.fhamster.dolldrobe.model;
 
 import java.util.Date;
 
-public class FPageCommodity {
-    private String uAccountnumber;
-
-    private String cNum;
-
+public class FPageCommodity extends FPageCommodityKey {
     private Date fgDate;
 
-    public FPageCommodity(String uAccountnumber, String cNum, Date fgDate) {
-        this.uAccountnumber = uAccountnumber;
-        this.cNum = cNum;
+    public FPageCommodity(String cNum, String uAccountnumber, Date fgDate) {
+        super(cNum, uAccountnumber);
         this.fgDate = fgDate;
     }
 
     public FPageCommodity() {
         super();
-    }
-
-    public String getuAccountnumber() {
-        return uAccountnumber;
-    }
-
-    public void setuAccountnumber(String uAccountnumber) {
-        this.uAccountnumber = uAccountnumber == null ? null : uAccountnumber.trim();
-    }
-
-    public String getcNum() {
-        return cNum;
-    }
-
-    public void setcNum(String cNum) {
-        this.cNum = cNum == null ? null : cNum.trim();
     }
 
     public Date getFgDate() {

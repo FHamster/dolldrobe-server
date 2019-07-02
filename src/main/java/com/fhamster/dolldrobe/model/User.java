@@ -7,7 +7,7 @@ public class User {
 
     private String uName;
 
-    private String uPassword;
+    private String uPsw;
 
     private String uSex;
 
@@ -17,17 +17,20 @@ public class User {
 
     private String uWx;
 
+    private String uTel;
+
     private String uPicurl;
 
-    public User(String uAccountnumber, String iId, String uName, String uPassword, String uSex, String uEmail, String uQq, String uWx, String uPicurl) {
+    public User(String uAccountnumber, String iId, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uPicurl) {
         this.uAccountnumber = uAccountnumber;
         this.iId = iId;
         this.uName = uName;
-        this.uPassword = uPassword;
+        this.uPsw = uPsw;
         this.uSex = uSex;
         this.uEmail = uEmail;
         this.uQq = uQq;
         this.uWx = uWx;
+        this.uTel = uTel;
         this.uPicurl = uPicurl;
     }
 
@@ -59,12 +62,12 @@ public class User {
         this.uName = uName == null ? null : uName.trim();
     }
 
-    public String getuPassword() {
-        return uPassword;
+    public String getuPsw() {
+        return uPsw;
     }
 
-    public void setuPassword(String uPassword) {
-        this.uPassword = uPassword == null ? null : uPassword.trim();
+    public void setuPsw(String uPsw) {
+        this.uPsw = uPsw == null ? null : uPsw.trim();
     }
 
     public String getuSex() {
@@ -97,6 +100,14 @@ public class User {
 
     public void setuWx(String uWx) {
         this.uWx = uWx == null ? null : uWx.trim();
+    }
+
+    public String getuTel() {
+        return uTel;
+    }
+
+    public void setuTel(String uTel) {
+        this.uTel = uTel == null ? null : uTel.trim();
     }
 
     public String getuPicurl() {

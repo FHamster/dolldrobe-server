@@ -2,6 +2,7 @@ package com.fhamster.dolldrobe.dao;
 
 import com.fhamster.dolldrobe.model.FPageCommodity;
 import com.fhamster.dolldrobe.model.FPageCommodityExample;
+import com.fhamster.dolldrobe.model.FPageCommodityKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,7 @@ public interface FPageCommodityMapper {
 
     int deleteByExample(FPageCommodityExample example);
 
-    int deleteByPrimaryKey(String uAccountnumber);
+    int deleteByPrimaryKey(FPageCommodityKey key);
 
     int insert(FPageCommodity record);
 
@@ -18,7 +19,7 @@ public interface FPageCommodityMapper {
 
     List<FPageCommodity> selectByExample(FPageCommodityExample example);
 
-    FPageCommodity selectByPrimaryKey(String uAccountnumber);
+    FPageCommodity selectByPrimaryKey(FPageCommodityKey key);
 
     int updateByExampleSelective(@Param("record") FPageCommodity record, @Param("example") FPageCommodityExample example);
 

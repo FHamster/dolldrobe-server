@@ -6,11 +6,12 @@
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_Password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.User" >
@@ -18,11 +19,12 @@
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_Password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_PicUrl" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
@@ -85,7 +87,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    U_AccountNumber, I_Id, U_Name, U_Password, U_Sex, U_Email, U_QQ, U_WX
+    U_AccountNumber, I_Id, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel
   </sql>
   <sql id="Blob_Column_List" >
     U_PicUrl
@@ -140,12 +142,12 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.User" >
     insert into user (U_AccountNumber, I_Id, U_Name, 
-      U_Password, U_Sex, U_Email, 
-      U_QQ, U_WX, U_PicUrl
+      U_Psw, U_Sex, U_Email, 
+      U_QQ, U_WX, U_Tel, U_PicUrl
       )
     values (#{uAccountnumber,jdbcType=VARCHAR}, #{iId,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
-      #{uPassword,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
-      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{uPicurl,jdbcType=LONGVARCHAR}
+      #{uPsw,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
+      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{uPicurl,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.User" >
@@ -160,8 +162,8 @@
       <if test="uName != null" >
         U_Name,
       </if>
-      <if test="uPassword != null" >
-        U_Password,
+      <if test="uPsw != null" >
+        U_Psw,
       </if>
       <if test="uSex != null" >
         U_Sex,
@@ -174,6 +176,9 @@
       </if>
       <if test="uWx != null" >
         U_WX,
+      </if>
+      <if test="uTel != null" >
+        U_Tel,
       </if>
       <if test="uPicurl != null" >
         U_PicUrl,
@@ -189,8 +194,8 @@
       <if test="uName != null" >
         #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPassword != null" >
-        #{uPassword,jdbcType=VARCHAR},
+      <if test="uPsw != null" >
+        #{uPsw,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null" >
         #{uSex,jdbcType=VARCHAR},
@@ -203,6 +208,9 @@
       </if>
       <if test="uWx != null" >
         #{uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="uTel != null" >
+        #{uTel,jdbcType=VARCHAR},
       </if>
       <if test="uPicurl != null" >
         #{uPicurl,jdbcType=LONGVARCHAR},
@@ -227,8 +235,8 @@
       <if test="record.uName != null" >
         U_Name = #{record.uName,jdbcType=VARCHAR},
       </if>
-      <if test="record.uPassword != null" >
-        U_Password = #{record.uPassword,jdbcType=VARCHAR},
+      <if test="record.uPsw != null" >
+        U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       </if>
       <if test="record.uSex != null" >
         U_Sex = #{record.uSex,jdbcType=VARCHAR},
@@ -241,6 +249,9 @@
       </if>
       <if test="record.uWx != null" >
         U_WX = #{record.uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uTel != null" >
+        U_Tel = #{record.uTel,jdbcType=VARCHAR},
       </if>
       <if test="record.uPicurl != null" >
         U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR},
@@ -255,11 +266,12 @@
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
-      U_Password = #{record.uPassword,jdbcType=VARCHAR},
+      U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
       U_Email = #{record.uEmail,jdbcType=VARCHAR},
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
       U_WX = #{record.uWx,jdbcType=VARCHAR},
+      U_Tel = #{record.uTel,jdbcType=VARCHAR},
       U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -270,11 +282,12 @@
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
-      U_Password = #{record.uPassword,jdbcType=VARCHAR},
+      U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
       U_Email = #{record.uEmail,jdbcType=VARCHAR},
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
-      U_WX = #{record.uWx,jdbcType=VARCHAR}
+      U_WX = #{record.uWx,jdbcType=VARCHAR},
+      U_Tel = #{record.uTel,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -288,8 +301,8 @@
       <if test="uName != null" >
         U_Name = #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPassword != null" >
-        U_Password = #{uPassword,jdbcType=VARCHAR},
+      <if test="uPsw != null" >
+        U_Psw = #{uPsw,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null" >
         U_Sex = #{uSex,jdbcType=VARCHAR},
@@ -303,6 +316,9 @@
       <if test="uWx != null" >
         U_WX = #{uWx,jdbcType=VARCHAR},
       </if>
+      <if test="uTel != null" >
+        U_Tel = #{uTel,jdbcType=VARCHAR},
+      </if>
       <if test="uPicurl != null" >
         U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR},
       </if>
@@ -313,11 +329,12 @@
     update user
     set I_Id = #{iId,jdbcType=VARCHAR},
       U_Name = #{uName,jdbcType=VARCHAR},
-      U_Password = #{uPassword,jdbcType=VARCHAR},
+      U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},
       U_QQ = #{uQq,jdbcType=VARCHAR},
       U_WX = #{uWx,jdbcType=VARCHAR},
+      U_Tel = #{uTel,jdbcType=VARCHAR},
       U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR}
     where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
@@ -325,11 +342,12 @@
     update user
     set I_Id = #{iId,jdbcType=VARCHAR},
       U_Name = #{uName,jdbcType=VARCHAR},
-      U_Password = #{uPassword,jdbcType=VARCHAR},
+      U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},
       U_QQ = #{uQq,jdbcType=VARCHAR},
-      U_WX = #{uWx,jdbcType=VARCHAR}
+      U_WX = #{uWx,jdbcType=VARCHAR},
+      U_Tel = #{uTel,jdbcType=VARCHAR}
     where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
 </mapper>

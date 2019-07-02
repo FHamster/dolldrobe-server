@@ -105,73 +105,73 @@ public class MessageExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andUseUAccountnumberIsNull() {
-            addCriterion("Use_U_AccountNumber is null");
+        public Criteria andMNumIsNull() {
+            addCriterion("M_Num is null");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberIsNotNull() {
-            addCriterion("Use_U_AccountNumber is not null");
+        public Criteria andMNumIsNotNull() {
+            addCriterion("M_Num is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberEqualTo(String value) {
-            addCriterion("Use_U_AccountNumber =", value, "useUAccountnumber");
+        public Criteria andMNumEqualTo(String value) {
+            addCriterion("M_Num =", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberNotEqualTo(String value) {
-            addCriterion("Use_U_AccountNumber <>", value, "useUAccountnumber");
+        public Criteria andMNumNotEqualTo(String value) {
+            addCriterion("M_Num <>", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberGreaterThan(String value) {
-            addCriterion("Use_U_AccountNumber >", value, "useUAccountnumber");
+        public Criteria andMNumGreaterThan(String value) {
+            addCriterion("M_Num >", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberGreaterThanOrEqualTo(String value) {
-            addCriterion("Use_U_AccountNumber >=", value, "useUAccountnumber");
+        public Criteria andMNumGreaterThanOrEqualTo(String value) {
+            addCriterion("M_Num >=", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberLessThan(String value) {
-            addCriterion("Use_U_AccountNumber <", value, "useUAccountnumber");
+        public Criteria andMNumLessThan(String value) {
+            addCriterion("M_Num <", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberLessThanOrEqualTo(String value) {
-            addCriterion("Use_U_AccountNumber <=", value, "useUAccountnumber");
+        public Criteria andMNumLessThanOrEqualTo(String value) {
+            addCriterion("M_Num <=", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberLike(String value) {
-            addCriterion("Use_U_AccountNumber like", value, "useUAccountnumber");
+        public Criteria andMNumLike(String value) {
+            addCriterion("M_Num like", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberNotLike(String value) {
-            addCriterion("Use_U_AccountNumber not like", value, "useUAccountnumber");
+        public Criteria andMNumNotLike(String value) {
+            addCriterion("M_Num not like", value, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberIn(List<String> values) {
-            addCriterion("Use_U_AccountNumber in", values, "useUAccountnumber");
+        public Criteria andMNumIn(List<String> values) {
+            addCriterion("M_Num in", values, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberNotIn(List<String> values) {
-            addCriterion("Use_U_AccountNumber not in", values, "useUAccountnumber");
+        public Criteria andMNumNotIn(List<String> values) {
+            addCriterion("M_Num not in", values, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberBetween(String value1, String value2) {
-            addCriterion("Use_U_AccountNumber between", value1, value2, "useUAccountnumber");
+        public Criteria andMNumBetween(String value1, String value2) {
+            addCriterion("M_Num between", value1, value2, "mNum");
             return (Criteria) this;
         }
 
-        public Criteria andUseUAccountnumberNotBetween(String value1, String value2) {
-            addCriterion("Use_U_AccountNumber not between", value1, value2, "useUAccountnumber");
+        public Criteria andMNumNotBetween(String value1, String value2) {
+            addCriterion("M_Num not between", value1, value2, "mNum");
             return (Criteria) this;
         }
 
@@ -245,73 +245,73 @@ public class MessageExample {
             return (Criteria) this;
         }
 
-        public Criteria andMNumIsNull() {
-            addCriterion("M_Num is null");
+        public Criteria andUseUAccountnumberIsNull() {
+            addCriterion("Use_U_AccountNumber is null");
             return (Criteria) this;
         }
 
-        public Criteria andMNumIsNotNull() {
-            addCriterion("M_Num is not null");
+        public Criteria andUseUAccountnumberIsNotNull() {
+            addCriterion("Use_U_AccountNumber is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMNumEqualTo(String value) {
-            addCriterion("M_Num =", value, "mNum");
+        public Criteria andUseUAccountnumberEqualTo(String value) {
+            addCriterion("Use_U_AccountNumber =", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotEqualTo(String value) {
-            addCriterion("M_Num <>", value, "mNum");
+        public Criteria andUseUAccountnumberNotEqualTo(String value) {
+            addCriterion("Use_U_AccountNumber <>", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumGreaterThan(String value) {
-            addCriterion("M_Num >", value, "mNum");
+        public Criteria andUseUAccountnumberGreaterThan(String value) {
+            addCriterion("Use_U_AccountNumber >", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumGreaterThanOrEqualTo(String value) {
-            addCriterion("M_Num >=", value, "mNum");
+        public Criteria andUseUAccountnumberGreaterThanOrEqualTo(String value) {
+            addCriterion("Use_U_AccountNumber >=", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumLessThan(String value) {
-            addCriterion("M_Num <", value, "mNum");
+        public Criteria andUseUAccountnumberLessThan(String value) {
+            addCriterion("Use_U_AccountNumber <", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumLessThanOrEqualTo(String value) {
-            addCriterion("M_Num <=", value, "mNum");
+        public Criteria andUseUAccountnumberLessThanOrEqualTo(String value) {
+            addCriterion("Use_U_AccountNumber <=", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumLike(String value) {
-            addCriterion("M_Num like", value, "mNum");
+        public Criteria andUseUAccountnumberLike(String value) {
+            addCriterion("Use_U_AccountNumber like", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotLike(String value) {
-            addCriterion("M_Num not like", value, "mNum");
+        public Criteria andUseUAccountnumberNotLike(String value) {
+            addCriterion("Use_U_AccountNumber not like", value, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumIn(List<String> values) {
-            addCriterion("M_Num in", values, "mNum");
+        public Criteria andUseUAccountnumberIn(List<String> values) {
+            addCriterion("Use_U_AccountNumber in", values, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotIn(List<String> values) {
-            addCriterion("M_Num not in", values, "mNum");
+        public Criteria andUseUAccountnumberNotIn(List<String> values) {
+            addCriterion("Use_U_AccountNumber not in", values, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumBetween(String value1, String value2) {
-            addCriterion("M_Num between", value1, value2, "mNum");
+        public Criteria andUseUAccountnumberBetween(String value1, String value2) {
+            addCriterion("Use_U_AccountNumber between", value1, value2, "useUAccountnumber");
             return (Criteria) this;
         }
 
-        public Criteria andMNumNotBetween(String value1, String value2) {
-            addCriterion("M_Num not between", value1, value2, "mNum");
+        public Criteria andUseUAccountnumberNotBetween(String value1, String value2) {
+            addCriterion("Use_U_AccountNumber not between", value1, value2, "useUAccountnumber");
             return (Criteria) this;
         }
 

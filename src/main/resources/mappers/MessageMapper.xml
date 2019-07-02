@@ -3,9 +3,9 @@
 <mapper namespace="com.fhamster.dolldrobe.dao.MessageMapper" >
   <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.Message" >
     <constructor >
-      <idArg column="Use_U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <idArg column="M_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Use_U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="M_SendTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="M_SentContent" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    Use_U_AccountNumber, U_AccountNumber, M_Num, M_SendTime, M_SentContent
+    M_Num, U_AccountNumber, Use_U_AccountNumber, M_SendTime, M_SentContent
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.MessageExample" >
     select
@@ -85,19 +85,15 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.MessageKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from message
-    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
-      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
-      and M_Num = #{mNum,jdbcType=VARCHAR}
+    where M_Num = #{mNum,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.MessageKey" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from message
-    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
-      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
-      and M_Num = #{mNum,jdbcType=VARCHAR}
+    where M_Num = #{mNum,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.MessageExample" >
     delete from message
@@ -106,24 +102,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Message" >
-    insert into message (Use_U_AccountNumber, U_AccountNumber, 
-      M_Num, M_SendTime, M_SentContent
-      )
-    values (#{useUAccountnumber,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, 
-      #{mNum,jdbcType=VARCHAR}, #{mSendtime,jdbcType=TIMESTAMP}, #{mSentcontent,jdbcType=VARCHAR}
-      )
+    insert into message (M_Num, U_AccountNumber, Use_U_AccountNumber, 
+      M_SendTime, M_SentContent)
+    values (#{mNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{useUAccountnumber,jdbcType=VARCHAR}, 
+      #{mSendtime,jdbcType=TIMESTAMP}, #{mSentcontent,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Message" >
     insert into message
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="useUAccountnumber != null" >
-        Use_U_AccountNumber,
+      <if test="mNum != null" >
+        M_Num,
       </if>
       <if test="uAccountnumber != null" >
         U_AccountNumber,
       </if>
-      <if test="mNum != null" >
-        M_Num,
+      <if test="useUAccountnumber != null" >
+        Use_U_AccountNumber,
       </if>
       <if test="mSendtime != null" >
         M_SendTime,
@@ -133,14 +127,14 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="useUAccountnumber != null" >
-        #{useUAccountnumber,jdbcType=VARCHAR},
+      <if test="mNum != null" >
+        #{mNum,jdbcType=VARCHAR},
       </if>
       <if test="uAccountnumber != null" >
         #{uAccountnumber,jdbcType=VARCHAR},
       </if>
-      <if test="mNum != null" >
-        #{mNum,jdbcType=VARCHAR},
+      <if test="useUAccountnumber != null" >
+        #{useUAccountnumber,jdbcType=VARCHAR},
       </if>
       <if test="mSendtime != null" >
         #{mSendtime,jdbcType=TIMESTAMP},
@@ -159,14 +153,14 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update message
     <set >
-      <if test="record.useUAccountnumber != null" >
-        Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
+      <if test="record.mNum != null" >
+        M_Num = #{record.mNum,jdbcType=VARCHAR},
       </if>
       <if test="record.uAccountnumber != null" >
         U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       </if>
-      <if test="record.mNum != null" >
-        M_Num = #{record.mNum,jdbcType=VARCHAR},
+      <if test="record.useUAccountnumber != null" >
+        Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
       </if>
       <if test="record.mSendtime != null" >
         M_SendTime = #{record.mSendtime,jdbcType=TIMESTAMP},
@@ -181,9 +175,9 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update message
-    set Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
+    set M_Num = #{record.mNum,jdbcType=VARCHAR},
       U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
-      M_Num = #{record.mNum,jdbcType=VARCHAR},
+      Use_U_AccountNumber = #{record.useUAccountnumber,jdbcType=VARCHAR},
       M_SendTime = #{record.mSendtime,jdbcType=TIMESTAMP},
       M_SentContent = #{record.mSentcontent,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -193,6 +187,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.Message" >
     update message
     <set >
+      <if test="uAccountnumber != null" >
+        U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="useUAccountnumber != null" >
+        Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR},
+      </if>
       <if test="mSendtime != null" >
         M_SendTime = #{mSendtime,jdbcType=TIMESTAMP},
       </if>
@@ -200,16 +200,14 @@
         M_SentContent = #{mSentcontent,jdbcType=VARCHAR},
       </if>
     </set>
-    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
-      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
-      and M_Num = #{mNum,jdbcType=VARCHAR}
+    where M_Num = #{mNum,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Message" >
     update message
-    set M_SendTime = #{mSendtime,jdbcType=TIMESTAMP},
+    set U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR},
+      M_SendTime = #{mSendtime,jdbcType=TIMESTAMP},
       M_SentContent = #{mSentcontent,jdbcType=VARCHAR}
-    where Use_U_AccountNumber = #{useUAccountnumber,jdbcType=VARCHAR}
-      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
-      and M_Num = #{mNum,jdbcType=VARCHAR}
+    where M_Num = #{mNum,jdbcType=VARCHAR}
   </update>
 </mapper>

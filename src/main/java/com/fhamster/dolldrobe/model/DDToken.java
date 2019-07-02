@@ -1,8 +1,6 @@
 package com.fhamster.dolldrobe.model;
 
-import java.io.Serializable;
-
-public class DDToken implements Serializable {
+public class DDToken {
     private String tokenid;
 
     private String uAccountnumber;

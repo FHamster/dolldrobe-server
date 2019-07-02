@@ -6,11 +6,12 @@
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_Passwor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="D_Attention" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="D_WorkNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
@@ -20,11 +21,12 @@
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_Passwor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="D_Attention" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="D_WorkNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="U_PicUrl" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
@@ -89,7 +91,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    U_AccountNumber, I_Id, U_Name, U_Passwor, U_Sex, U_Email, U_QQ, U_WX, D_Attention, 
+    U_AccountNumber, I_Id, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel, D_Attention, 
     D_WorkNum
   </sql>
   <sql id="Blob_Column_List" >
@@ -145,12 +147,12 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Designer" >
     insert into designer (U_AccountNumber, I_Id, U_Name, 
-      U_Passwor, U_Sex, U_Email, 
-      U_QQ, U_WX, D_Attention, 
+      U_Psw, U_Sex, U_Email, 
+      U_QQ, U_WX, U_Tel, D_Attention, 
       D_WorkNum, U_PicUrl)
     values (#{uAccountnumber,jdbcType=VARCHAR}, #{iId,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
-      #{uPasswor,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
-      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{dAttention,jdbcType=INTEGER}, 
+      #{uPsw,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
+      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{dAttention,jdbcType=INTEGER}, 
       #{dWorknum,jdbcType=INTEGER}, #{uPicurl,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Designer" >
@@ -165,8 +167,8 @@
       <if test="uName != null" >
         U_Name,
       </if>
-      <if test="uPasswor != null" >
-        U_Passwor,
+      <if test="uPsw != null" >
+        U_Psw,
       </if>
       <if test="uSex != null" >
         U_Sex,
@@ -179,6 +181,9 @@
       </if>
       <if test="uWx != null" >
         U_WX,
+      </if>
+      <if test="uTel != null" >
+        U_Tel,
       </if>
       <if test="dAttention != null" >
         D_Attention,
@@ -200,8 +205,8 @@
       <if test="uName != null" >
         #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPasswor != null" >
-        #{uPasswor,jdbcType=VARCHAR},
+      <if test="uPsw != null" >
+        #{uPsw,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null" >
         #{uSex,jdbcType=VARCHAR},
@@ -214,6 +219,9 @@
       </if>
       <if test="uWx != null" >
         #{uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="uTel != null" >
+        #{uTel,jdbcType=VARCHAR},
       </if>
       <if test="dAttention != null" >
         #{dAttention,jdbcType=INTEGER},
@@ -244,8 +252,8 @@
       <if test="record.uName != null" >
         U_Name = #{record.uName,jdbcType=VARCHAR},
       </if>
-      <if test="record.uPasswor != null" >
-        U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      <if test="record.uPsw != null" >
+        U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       </if>
       <if test="record.uSex != null" >
         U_Sex = #{record.uSex,jdbcType=VARCHAR},
@@ -258,6 +266,9 @@
       </if>
       <if test="record.uWx != null" >
         U_WX = #{record.uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uTel != null" >
+        U_Tel = #{record.uTel,jdbcType=VARCHAR},
       </if>
       <if test="record.dAttention != null" >
         D_Attention = #{record.dAttention,jdbcType=INTEGER},
@@ -278,11 +289,12 @@
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
-      U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
       U_Email = #{record.uEmail,jdbcType=VARCHAR},
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
       U_WX = #{record.uWx,jdbcType=VARCHAR},
+      U_Tel = #{record.uTel,jdbcType=VARCHAR},
       D_Attention = #{record.dAttention,jdbcType=INTEGER},
       D_WorkNum = #{record.dWorknum,jdbcType=INTEGER},
       U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR}
@@ -295,11 +307,12 @@
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
-      U_Passwor = #{record.uPasswor,jdbcType=VARCHAR},
+      U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
       U_Email = #{record.uEmail,jdbcType=VARCHAR},
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
       U_WX = #{record.uWx,jdbcType=VARCHAR},
+      U_Tel = #{record.uTel,jdbcType=VARCHAR},
       D_Attention = #{record.dAttention,jdbcType=INTEGER},
       D_WorkNum = #{record.dWorknum,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -315,8 +328,8 @@
       <if test="uName != null" >
         U_Name = #{uName,jdbcType=VARCHAR},
       </if>
-      <if test="uPasswor != null" >
-        U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      <if test="uPsw != null" >
+        U_Psw = #{uPsw,jdbcType=VARCHAR},
       </if>
       <if test="uSex != null" >
         U_Sex = #{uSex,jdbcType=VARCHAR},
@@ -329,6 +342,9 @@
       </if>
       <if test="uWx != null" >
         U_WX = #{uWx,jdbcType=VARCHAR},
+      </if>
+      <if test="uTel != null" >
+        U_Tel = #{uTel,jdbcType=VARCHAR},
       </if>
       <if test="dAttention != null" >
         D_Attention = #{dAttention,jdbcType=INTEGER},
@@ -346,11 +362,12 @@
     update designer
     set I_Id = #{iId,jdbcType=VARCHAR},
       U_Name = #{uName,jdbcType=VARCHAR},
-      U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},
       U_QQ = #{uQq,jdbcType=VARCHAR},
       U_WX = #{uWx,jdbcType=VARCHAR},
+      U_Tel = #{uTel,jdbcType=VARCHAR},
       D_Attention = #{dAttention,jdbcType=INTEGER},
       D_WorkNum = #{dWorknum,jdbcType=INTEGER},
       U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR}
@@ -360,11 +377,12 @@
     update designer
     set I_Id = #{iId,jdbcType=VARCHAR},
       U_Name = #{uName,jdbcType=VARCHAR},
-      U_Passwor = #{uPasswor,jdbcType=VARCHAR},
+      U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},
       U_QQ = #{uQq,jdbcType=VARCHAR},
       U_WX = #{uWx,jdbcType=VARCHAR},
+      U_Tel = #{uTel,jdbcType=VARCHAR},
       D_Attention = #{dAttention,jdbcType=INTEGER},
       D_WorkNum = #{dWorknum,jdbcType=INTEGER}
     where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}

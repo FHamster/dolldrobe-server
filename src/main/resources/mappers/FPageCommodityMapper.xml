@@ -3,8 +3,8 @@
 <mapper namespace="com.fhamster.dolldrobe.dao.FPageCommodityMapper" >
   <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.FPageCommodity" >
     <constructor >
+      <idArg column="C_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="C_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="FG_Date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
@@ -67,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    U_AccountNumber, C_Num, FG_Date
+    C_Num, U_AccountNumber, FG_Date
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.FPageCommodityExample" >
     select
@@ -83,15 +83,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.FPageCommodityKey" >
     select 
     <include refid="Base_Column_List" />
     from fpage_commodity
-    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+    where C_Num = #{cNum,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.FPageCommodityKey" >
     delete from fpage_commodity
-    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+    where C_Num = #{cNum,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.FPageCommodityExample" >
     delete from fpage_commodity
@@ -100,30 +102,30 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.FPageCommodity" >
-    insert into fpage_commodity (U_AccountNumber, C_Num, FG_Date
+    insert into fpage_commodity (C_Num, U_AccountNumber, FG_Date
       )
-    values (#{uAccountnumber,jdbcType=VARCHAR}, #{cNum,jdbcType=VARCHAR}, #{fgDate,jdbcType=TIMESTAMP}
+    values (#{cNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{fgDate,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.FPageCommodity" >
     insert into fpage_commodity
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="uAccountnumber != null" >
-        U_AccountNumber,
-      </if>
       <if test="cNum != null" >
         C_Num,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
       </if>
       <if test="fgDate != null" >
         FG_Date,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="uAccountnumber != null" >
-        #{uAccountnumber,jdbcType=VARCHAR},
-      </if>
       <if test="cNum != null" >
         #{cNum,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
       </if>
       <if test="fgDate != null" >
         #{fgDate,jdbcType=TIMESTAMP},
@@ -139,11 +141,11 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update fpage_commodity
     <set >
-      <if test="record.uAccountnumber != null" >
-        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
-      </if>
       <if test="record.cNum != null" >
         C_Num = #{record.cNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       </if>
       <if test="record.fgDate != null" >
         FG_Date = #{record.fgDate,jdbcType=TIMESTAMP},
@@ -155,8 +157,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update fpage_commodity
-    set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
-      C_Num = #{record.cNum,jdbcType=VARCHAR},
+    set C_Num = #{record.cNum,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       FG_Date = #{record.fgDate,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -165,19 +167,17 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.FPageCommodity" >
     update fpage_commodity
     <set >
-      <if test="cNum != null" >
-        C_Num = #{cNum,jdbcType=VARCHAR},
-      </if>
       <if test="fgDate != null" >
         FG_Date = #{fgDate,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+    where C_Num = #{cNum,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.FPageCommodity" >
     update fpage_commodity
-    set C_Num = #{cNum,jdbcType=VARCHAR},
-      FG_Date = #{fgDate,jdbcType=TIMESTAMP}
-    where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
+    set FG_Date = #{fgDate,jdbcType=TIMESTAMP}
+    where C_Num = #{cNum,jdbcType=VARCHAR}
+      and U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
 </mapper>

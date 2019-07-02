@@ -2,6 +2,7 @@ package com.fhamster.dolldrobe.dao;
 
 import com.fhamster.dolldrobe.model.ShoppingCart;
 import com.fhamster.dolldrobe.model.ShoppingCartExample;
+import com.fhamster.dolldrobe.model.ShoppingCartKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,7 @@ public interface ShoppingCartMapper {
 
     int deleteByExample(ShoppingCartExample example);
 
-    int deleteByPrimaryKey(String uAccountnumber);
+    int deleteByPrimaryKey(ShoppingCartKey key);
 
     int insert(ShoppingCart record);
 
@@ -18,7 +19,7 @@ public interface ShoppingCartMapper {
 
     List<ShoppingCart> selectByExample(ShoppingCartExample example);
 
-    ShoppingCart selectByPrimaryKey(String uAccountnumber);
+    ShoppingCart selectByPrimaryKey(ShoppingCartKey key);
 
     int updateByExampleSelective(@Param("record") ShoppingCart record, @Param("example") ShoppingCartExample example);
 

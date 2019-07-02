@@ -2,7 +2,6 @@ package com.fhamster.dolldrobe.dao;
 
 import com.fhamster.dolldrobe.model.Message;
 import com.fhamster.dolldrobe.model.MessageExample;
-import com.fhamster.dolldrobe.model.MessageKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +10,7 @@ public interface MessageMapper {
 
     int deleteByExample(MessageExample example);
 
-    int deleteByPrimaryKey(MessageKey key);
+    int deleteByPrimaryKey(String mNum);
 
     int insert(Message record);
 
@@ -19,7 +18,7 @@ public interface MessageMapper {
 
     List<Message> selectByExample(MessageExample example);
 
-    Message selectByPrimaryKey(MessageKey key);
+    Message selectByPrimaryKey(String mNum);
 
     int updateByExampleSelective(@Param("record") Message record, @Param("example") MessageExample example);
 
