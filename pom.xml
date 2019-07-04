@@ -11,14 +11,6 @@
     <groupId>com.fhamster</groupId>
     <artifactId>dolldrobe</artifactId>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>alimaven spring plugin</id>
-            <name>alimaven spring plugin</name>
-            <url>https://maven.aliyun.com/repository/spring-plugin</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <version>0.0.1-SNAPSHOT</version>
     <name>dolldrobe</name>
     <description>Demo project for Spring Boot</description>
