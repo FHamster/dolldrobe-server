@@ -28,6 +28,7 @@ public class UserService {
 
     /**
      * 检查帐号唯一
+     *
      * @param acc 参与检查的用户帐号
      * @return true 用户帐号唯一返回 否则false
      */
@@ -35,8 +36,12 @@ public class UserService {
         UserExample example = new UserExample();
         example.createCriteria()
                 .andUAccountnumberEqualTo(acc);
+
+
         long n = (long) dao.selectByExampleWithBLOBs(example).size();
 
         return n < 1;
     }
+
+
 }
