@@ -17,7 +17,6 @@ import static org.junit.Assert.*;
 public class GoodServiceTest {
     @Autowired
     GoodService service;
-
     @Test
     public void getGood() {
 
