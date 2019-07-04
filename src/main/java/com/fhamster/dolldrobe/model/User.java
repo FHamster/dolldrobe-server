@@ -21,7 +21,7 @@ public class User {
 
     private String uPicurl;
 
-    public User(String uAccountnumber, String iId, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uPicurl) {
+    public User(String uAccountnumber, String iId, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel) {
         this.uAccountnumber = uAccountnumber;
         this.iId = iId;
         this.uName = uName;
