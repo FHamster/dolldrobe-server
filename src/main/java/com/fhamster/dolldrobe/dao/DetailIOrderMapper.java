@@ -2,6 +2,7 @@ package com.fhamster.dolldrobe.dao;
 
 import com.fhamster.dolldrobe.model.DetailIOrder;
 import com.fhamster.dolldrobe.model.DetailIOrderExample;
+import com.fhamster.dolldrobe.model.DetailIOrderKey;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +11,7 @@ public interface DetailIOrderMapper {
 
     int deleteByExample(DetailIOrderExample example);
 
-    int deleteByPrimaryKey(String oNum);
+    int deleteByPrimaryKey(DetailIOrderKey key);
 
     int insert(DetailIOrder record);
 
@@ -18,7 +19,7 @@ public interface DetailIOrderMapper {
 
     List<DetailIOrder> selectByExample(DetailIOrderExample example);
 
-    DetailIOrder selectByPrimaryKey(String oNum);
+    DetailIOrder selectByPrimaryKey(DetailIOrderKey key);
 
     int updateByExampleSelective(@Param("record") DetailIOrder record, @Param("example") DetailIOrderExample example);
 

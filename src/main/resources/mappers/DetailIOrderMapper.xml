@@ -3,8 +3,8 @@
 <mapper namespace="com.fhamster.dolldrobe.dao.DetailIOrderMapper" >
   <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.DetailIOrder" >
     <constructor >
+      <idArg column="SKU_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <idArg column="O_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="SKU_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="DO_Num" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="DO_DiscountAmount" jdbcType="REAL" javaType="java.lang.Float" />
     </constructor>
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    O_Num, SKU_Id, DO_Num, DO_DiscountAmount
+    SKU_Id, O_Num, DO_Num, DO_DiscountAmount
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.DetailIOrderExample" >
     select
@@ -84,15 +84,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.DetailIOrderKey" >
     select 
     <include refid="Base_Column_List" />
     from detailiorder
-    where O_Num = #{oNum,jdbcType=VARCHAR}
+    where SKU_Id = #{skuId,jdbcType=VARCHAR}
+      and O_Num = #{oNum,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.DetailIOrderKey" >
     delete from detailiorder
-    where O_Num = #{oNum,jdbcType=VARCHAR}
+    where SKU_Id = #{skuId,jdbcType=VARCHAR}
+      and O_Num = #{oNum,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.fhamster.dolldrobe.model.DetailIOrderExample" >
     delete from detailiorder
@@ -101,19 +103,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
-    insert into detailiorder (O_Num, SKU_Id, DO_Num, 
+    insert into detailiorder (SKU_Id, O_Num, DO_Num, 
       DO_DiscountAmount)
-    values (#{oNum,jdbcType=VARCHAR}, #{skuId,jdbcType=VARCHAR}, #{doNum,jdbcType=INTEGER}, 
+    values (#{skuId,jdbcType=VARCHAR}, #{oNum,jdbcType=VARCHAR}, #{doNum,jdbcType=INTEGER}, 
       #{doDiscountamount,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
     insert into detailiorder
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="oNum != null" >
-        O_Num,
-      </if>
       <if test="skuId != null" >
         SKU_Id,
+      </if>
+      <if test="oNum != null" >
+        O_Num,
       </if>
       <if test="doNum != null" >
         DO_Num,
@@ -123,11 +125,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="oNum != null" >
-        #{oNum,jdbcType=VARCHAR},
-      </if>
       <if test="skuId != null" >
         #{skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="oNum != null" >
+        #{oNum,jdbcType=VARCHAR},
       </if>
       <if test="doNum != null" >
         #{doNum,jdbcType=INTEGER},
@@ -146,11 +148,11 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update detailiorder
     <set >
-      <if test="record.oNum != null" >
-        O_Num = #{record.oNum,jdbcType=VARCHAR},
-      </if>
       <if test="record.skuId != null" >
         SKU_Id = #{record.skuId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oNum != null" >
+        O_Num = #{record.oNum,jdbcType=VARCHAR},
       </if>
       <if test="record.doNum != null" >
         DO_Num = #{record.doNum,jdbcType=INTEGER},
@@ -165,8 +167,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update detailiorder
-    set O_Num = #{record.oNum,jdbcType=VARCHAR},
-      SKU_Id = #{record.skuId,jdbcType=VARCHAR},
+    set SKU_Id = #{record.skuId,jdbcType=VARCHAR},
+      O_Num = #{record.oNum,jdbcType=VARCHAR},
       DO_Num = #{record.doNum,jdbcType=INTEGER},
       DO_DiscountAmount = #{record.doDiscountamount,jdbcType=REAL}
     <if test="_parameter != null" >
@@ -176,9 +178,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
     update detailiorder
     <set >
-      <if test="skuId != null" >
-        SKU_Id = #{skuId,jdbcType=VARCHAR},
-      </if>
       <if test="doNum != null" >
         DO_Num = #{doNum,jdbcType=INTEGER},
       </if>
@@ -186,13 +185,14 @@
         DO_DiscountAmount = #{doDiscountamount,jdbcType=REAL},
       </if>
     </set>
-    where O_Num = #{oNum,jdbcType=VARCHAR}
+    where SKU_Id = #{skuId,jdbcType=VARCHAR}
+      and O_Num = #{oNum,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.DetailIOrder" >
     update detailiorder
-    set SKU_Id = #{skuId,jdbcType=VARCHAR},
-      DO_Num = #{doNum,jdbcType=INTEGER},
+    set DO_Num = #{doNum,jdbcType=INTEGER},
       DO_DiscountAmount = #{doDiscountamount,jdbcType=REAL}
-    where O_Num = #{oNum,jdbcType=VARCHAR}
+    where SKU_Id = #{skuId,jdbcType=VARCHAR}
+      and O_Num = #{oNum,jdbcType=VARCHAR}
   </update>
 </mapper>

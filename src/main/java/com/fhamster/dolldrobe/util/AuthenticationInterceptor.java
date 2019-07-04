@@ -1,8 +1,6 @@
 package com.fhamster.dolldrobe.util;
 
 import com.fhamster.dolldrobe.model.User;
-import com.fhamster.dolldrobe.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -44,7 +42,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 // 验证 token
                 try {
                     //检查jwt令牌, 如果令牌不合法或者过期, 里面会直接抛出异常, 下面的catch部分会直接返回
-                    JwtUtil.validateToken(token);
+                    User user = JwtUtil.validateToken(token);
+                    //用户信息写入request
+                    request.setAttribute("user", user);
                 } catch (Exception e) {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
                 }

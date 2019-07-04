@@ -28,7 +28,7 @@ public class JwtUtil {
         //jwt建造器,使用建造者模式,流式操作
         JwtBuilder builder = Jwts.builder()
                 .setClaims(map)
-                .setExpiration(new Date(System.currentTimeMillis() + tokenAT))// 1 hour
+                .setExpiration(new Date(System.currentTimeMillis() + tokenAT))// 2 hour
                 .signWith(SignatureAlgorithm.HS512, SECRET);
 
         //jwt前面一般都会加Bearer
@@ -48,6 +48,26 @@ public class JwtUtil {
 
             return user;
         } catch (Exception e) {
+            throw new IllegalStateException("Invalid Token. " + e.getMessage());
+        }
+
+    }
+
+    public static User encodeLoginForm(String encodPsw) {
+        System.out.println(encodPsw);
+        try {
+            // parse the token.
+            Map<String, Object> jwtbody = Jwts.parser()
+                    .setSigningKey(String.valueOf(123))
+                    .parseClaimsJws(encodPsw)
+                    .getBody();
+
+            String psw = (String) jwtbody.get("uPsw");
+            User user = new User();
+            user.setuPsw(psw);
+            return user;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new IllegalStateException("Invalid Token. " + e.getMessage());
         }
 

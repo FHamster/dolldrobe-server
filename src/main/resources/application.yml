@@ -1,8 +1,10 @@
-mybatis:
-  mapper-locations: classpath:/mappers/*.xml
 spring:
   application:
     name: DollDrobe
+  devtools:
+    restart:
+      enabled: true
+  #============================================================================================
   #数据源配置
   datasource:
     #    url: jdbc:mysql://localhost:3306/dolldrobe?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
@@ -59,28 +61,31 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
 
+  #============================================================================================
   #cache配置
   cache:
     type: redis
+
+  #============================================================================================
   #redis数据源配置
   redis:
     database: 0
     host: 127.0.0.1
     port: 6379
-#    timeout: 0
-#    password:
+    #    timeout: 0
+    #    password:
     lettuce:
       pool:
         max-active: 8
         max-idle: 8
         min-idle: 0
         max-wait: -1
-#    jedis:
-#      pool:
-#        max-active: 8
-#        max-idle: 8
-#        min-idle: 0
-#        max-wait: -1
+  #    jedis:
+  #      pool:
+  #        max-active: 8
+  #        max-idle: 8
+  #        min-idle: 0
+  #        max-wait: -1
 
 
   banner:
@@ -89,8 +94,16 @@ spring:
     encoding:
       charset: UTF-8
 
+#============================================================================================
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  configuration:
+    cache-enabled: true
+
+#============================================================================================
 server:
   port: 8082
   servlet:
     context-path: /api
+
 

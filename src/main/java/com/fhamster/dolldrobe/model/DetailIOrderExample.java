@@ -104,76 +104,6 @@ public class DetailIOrderExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andONumIsNull() {
-            addCriterion("O_Num is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumIsNotNull() {
-            addCriterion("O_Num is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumEqualTo(String value) {
-            addCriterion("O_Num =", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumNotEqualTo(String value) {
-            addCriterion("O_Num <>", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumGreaterThan(String value) {
-            addCriterion("O_Num >", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumGreaterThanOrEqualTo(String value) {
-            addCriterion("O_Num >=", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumLessThan(String value) {
-            addCriterion("O_Num <", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumLessThanOrEqualTo(String value) {
-            addCriterion("O_Num <=", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumLike(String value) {
-            addCriterion("O_Num like", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumNotLike(String value) {
-            addCriterion("O_Num not like", value, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumIn(List<String> values) {
-            addCriterion("O_Num in", values, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumNotIn(List<String> values) {
-            addCriterion("O_Num not in", values, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumBetween(String value1, String value2) {
-            addCriterion("O_Num between", value1, value2, "oNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andONumNotBetween(String value1, String value2) {
-            addCriterion("O_Num not between", value1, value2, "oNum");
-            return (Criteria) this;
-        }
-
         public Criteria andSkuIdIsNull() {
             addCriterion("SKU_Id is null");
             return (Criteria) this;
@@ -241,6 +171,76 @@ public class DetailIOrderExample {
 
         public Criteria andSkuIdNotBetween(String value1, String value2) {
             addCriterion("SKU_Id not between", value1, value2, "skuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumIsNull() {
+            addCriterion("O_Num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumIsNotNull() {
+            addCriterion("O_Num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumEqualTo(String value) {
+            addCriterion("O_Num =", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumNotEqualTo(String value) {
+            addCriterion("O_Num <>", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumGreaterThan(String value) {
+            addCriterion("O_Num >", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumGreaterThanOrEqualTo(String value) {
+            addCriterion("O_Num >=", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumLessThan(String value) {
+            addCriterion("O_Num <", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumLessThanOrEqualTo(String value) {
+            addCriterion("O_Num <=", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumLike(String value) {
+            addCriterion("O_Num like", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumNotLike(String value) {
+            addCriterion("O_Num not like", value, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumIn(List<String> values) {
+            addCriterion("O_Num in", values, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumNotIn(List<String> values) {
+            addCriterion("O_Num not in", values, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumBetween(String value1, String value2) {
+            addCriterion("O_Num between", value1, value2, "oNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andONumNotBetween(String value1, String value2) {
+            addCriterion("O_Num not between", value1, value2, "oNum");
             return (Criteria) this;
         }
 
