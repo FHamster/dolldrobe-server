@@ -18,8 +18,12 @@ public class RegService {
         User user = new User(UAcc, UName, UPic, UPsw, USex, UTel, UEmail, UQQ, UWX);
         User user1 = dao.selectByPrimaryKey(UAcc);
 //todo        用户表中已存在该用户账号,抛出
-        if (!user1.getuAccountnumber().equals(user.getuAccountnumber())) {
-            dao.insert(user);
+        try {
+            if (!user1.getuAccountnumber().equals(user.getuAccountnumber())) {
+                dao.insert(user);
+            }
+        } catch (Exception e) {
+
         }
     }
 }

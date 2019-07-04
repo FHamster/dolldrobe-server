@@ -9,11 +9,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RegServiceTest {
+public class QueryFPageServiceTest {
+
     @Autowired
-    RegService service;
+    QueryFPageService service;
     @Test
-    public void insertUser() {
-        service.InsertUser("123","123","123","123","男","12345678912","123@qwe","123","123");
+    public void query() {
+        service.Query(" S2VN2C457H6 SASEBJD7B B 0TTE09C","DNA5BHY GPIJ8VYW42GSPT5PQX3YKTNJQBNX09L0");
     }
 }

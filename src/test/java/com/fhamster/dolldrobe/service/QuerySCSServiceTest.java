@@ -1,5 +1,6 @@
 package com.fhamster.dolldrobe.service;
 
+import com.fhamster.dolldrobe.model.ShoppingCart;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RegServiceTest {
+public class QuerySCSServiceTest {
     @Autowired
-    RegService service;
+    QuerySCSService service;
     @Test
-    public void insertUser() {
-        service.InsertUser("123","123","123","123","男","12345678912","123@qwe","123","123");
+    public void getSC() {
+        service.getSC("07TV4J0NCDHY1YXNJ7K04TJ5Q 6IR OH0DESJP0Y");
     }
 }
