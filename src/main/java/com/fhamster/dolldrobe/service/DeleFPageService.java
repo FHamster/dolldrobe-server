@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-//有用
 public class DeleFPageService {
     @Autowired
     FPageCommodityMapper dao;

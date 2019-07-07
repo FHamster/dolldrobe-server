@@ -1,3 +1,4 @@
+/*
 package com.fhamster.dolldrobe.service;
 
 import com.fhamster.dolldrobe.dao.UserMapper;
@@ -27,3 +28,4 @@ public class RegService {
         }
     }
 }
+*/

@@ -12,7 +12,7 @@
       <arg column="O_PTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="O_CTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="TPMoney" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="TotalPayment" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="TotalPayment" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -115,7 +115,7 @@
     values (#{oNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{oFtime,jdbcType=TIMESTAMP}, 
       #{oStime,jdbcType=TIMESTAMP}, #{oEtime,jdbcType=TIMESTAMP}, #{oRtime,jdbcType=TIMESTAMP}, 
       #{oPtime,jdbcType=TIMESTAMP}, #{oCtime,jdbcType=TIMESTAMP}, #{tpmoney,jdbcType=REAL}, 
-      #{totalpayment,jdbcType=TINYINT})
+      #{totalpayment,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.BasicOrder" >
     insert into basicorder
@@ -180,7 +180,7 @@
         #{tpmoney,jdbcType=REAL},
       </if>
       <if test="totalpayment != null" >
-        #{totalpayment,jdbcType=TINYINT},
+        #{totalpayment,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -221,7 +221,7 @@
         TPMoney = #{record.tpmoney,jdbcType=REAL},
       </if>
       <if test="record.totalpayment != null" >
-        TotalPayment = #{record.totalpayment,jdbcType=TINYINT},
+        TotalPayment = #{record.totalpayment,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -239,7 +239,7 @@
       O_PTime = #{record.oPtime,jdbcType=TIMESTAMP},
       O_CTime = #{record.oCtime,jdbcType=TIMESTAMP},
       TPMoney = #{record.tpmoney,jdbcType=REAL},
-      TotalPayment = #{record.totalpayment,jdbcType=TINYINT}
+      TotalPayment = #{record.totalpayment,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -272,7 +272,7 @@
         TPMoney = #{tpmoney,jdbcType=REAL},
       </if>
       <if test="totalpayment != null" >
-        TotalPayment = #{totalpayment,jdbcType=TINYINT},
+        TotalPayment = #{totalpayment,jdbcType=VARCHAR},
       </if>
     </set>
     where O_Num = #{oNum,jdbcType=VARCHAR}
@@ -287,7 +287,7 @@
       O_PTime = #{oPtime,jdbcType=TIMESTAMP},
       O_CTime = #{oCtime,jdbcType=TIMESTAMP},
       TPMoney = #{tpmoney,jdbcType=REAL},
-      TotalPayment = #{totalpayment,jdbcType=TINYINT}
+      TotalPayment = #{totalpayment,jdbcType=VARCHAR}
     where O_Num = #{oNum,jdbcType=VARCHAR}
   </update>
 </mapper>

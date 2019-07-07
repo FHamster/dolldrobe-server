@@ -1,5 +1,6 @@
 package com.fhamster.dolldrobe.dao;
 
+import com.fhamster.dolldrobe.model.FPageCommodity;
 import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.model.UserExample;
 import org.junit.Test;
@@ -17,6 +18,9 @@ public class UserMapperTest {
     @Autowired
     UserMapper dao;
 
+    @Autowired
+    FPageCommodityMapper mapper;
+
     @Test
 
     public void selectByExample() {
@@ -25,6 +29,5 @@ public class UserMapperTest {
 
         List<User> userList = dao.selectByExampleWithBLOBs(example);
         userList.forEach(System.out::println);
-
     }
 }

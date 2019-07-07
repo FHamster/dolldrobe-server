@@ -6,15 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class QueryFPageServiceTest {
+public class FPageServiceTest {
 
     @Autowired
-    QueryFPageService service;
+    FPageService service;
     @Test
     public void query() {
-        service.Query(" S2VN2C457H6 SASEBJD7B B 0TTE09C","DNA5BHY GPIJ8VYW42GSPT5PQX3YKTNJQBNX09L0");
+        service.getCom("root")
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void insertFPage() {
+        service.InsertFPage("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH");
     }
 }

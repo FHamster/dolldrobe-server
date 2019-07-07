@@ -15,6 +15,14 @@ public class QuerySCSServiceTest {
     QuerySCSService service;
     @Test
     public void getSC() {
-        service.getSC("07TV4J0NCDHY1YXNJ7K04TJ5Q 6IR OH0DESJP0Y");
+        service.getCartSKu("VYK40E92DOT19DBM PC9SRU K8E0X22P5T94VINV");
+    }
+
+    @Test
+    public void getSC1() {
+    }
+
+    @Test
+    public void getSC2() {
     }
 }

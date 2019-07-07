@@ -68,6 +68,7 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <!-- 1.5的版本默认采用的连接池技术是jedis  2.0以上版本默认连接池是lettuce, 在这里采用jedis，所以需要排除lettuce的jar -->
         </dependency>
+
         <!--spring2.0集成redis所需common-pool2-->
         <!-- 必须加上，jedis依赖此  -->
         <!-- spring boot 2.0 的操作手册有标注 大家可以去看看 地址是：https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/-->

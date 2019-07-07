@@ -254,52 +254,62 @@ public class AdministrativeRegionExample {
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseEqualTo(Byte value) {
+        public Criteria andArIsuseEqualTo(String value) {
             addCriterion("AR_isUse =", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseNotEqualTo(Byte value) {
+        public Criteria andArIsuseNotEqualTo(String value) {
             addCriterion("AR_isUse <>", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseGreaterThan(Byte value) {
+        public Criteria andArIsuseGreaterThan(String value) {
             addCriterion("AR_isUse >", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseGreaterThanOrEqualTo(Byte value) {
+        public Criteria andArIsuseGreaterThanOrEqualTo(String value) {
             addCriterion("AR_isUse >=", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseLessThan(Byte value) {
+        public Criteria andArIsuseLessThan(String value) {
             addCriterion("AR_isUse <", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseLessThanOrEqualTo(Byte value) {
+        public Criteria andArIsuseLessThanOrEqualTo(String value) {
             addCriterion("AR_isUse <=", value, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseIn(List<Byte> values) {
+        public Criteria andArIsuseLike(String value) {
+            addCriterion("AR_isUse like", value, "arIsuse");
+            return (Criteria) this;
+        }
+
+        public Criteria andArIsuseNotLike(String value) {
+            addCriterion("AR_isUse not like", value, "arIsuse");
+            return (Criteria) this;
+        }
+
+        public Criteria andArIsuseIn(List<String> values) {
             addCriterion("AR_isUse in", values, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseNotIn(List<Byte> values) {
+        public Criteria andArIsuseNotIn(List<String> values) {
             addCriterion("AR_isUse not in", values, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseBetween(Byte value1, Byte value2) {
+        public Criteria andArIsuseBetween(String value1, String value2) {
             addCriterion("AR_isUse between", value1, value2, "arIsuse");
             return (Criteria) this;
         }
 
-        public Criteria andArIsuseNotBetween(Byte value1, Byte value2) {
+        public Criteria andArIsuseNotBetween(String value1, String value2) {
             addCriterion("AR_isUse not between", value1, value2, "arIsuse");
             return (Criteria) this;
         }

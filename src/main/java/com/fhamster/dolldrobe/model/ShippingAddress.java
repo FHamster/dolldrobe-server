@@ -9,9 +9,9 @@ public class ShippingAddress {
 
     private String saDetail;
 
-    private Byte saDefault;
+    private String saDefault;
 
-    public ShippingAddress(String saNum, String arNum, String uAccountnumber, String saDetail, Byte saDefault) {
+    public ShippingAddress(String saNum, String arNum, String uAccountnumber, String saDetail, String saDefault) {
         this.saNum = saNum;
         this.arNum = arNum;
         this.uAccountnumber = uAccountnumber;
@@ -55,11 +55,11 @@ public class ShippingAddress {
         this.saDetail = saDetail == null ? null : saDetail.trim();
     }
 
-    public Byte getSaDefault() {
+    public String getSaDefault() {
         return saDefault;
     }
 
-    public void setSaDefault(Byte saDefault) {
-        this.saDefault = saDefault;
+    public void setSaDefault(String saDefault) {
+        this.saDefault = saDefault == null ? null : saDefault.trim();
     }
 }

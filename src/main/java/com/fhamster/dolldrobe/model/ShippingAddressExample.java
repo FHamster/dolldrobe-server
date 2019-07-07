@@ -394,52 +394,62 @@ public class ShippingAddressExample {
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultEqualTo(Byte value) {
+        public Criteria andSaDefaultEqualTo(String value) {
             addCriterion("SA_Default =", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultNotEqualTo(Byte value) {
+        public Criteria andSaDefaultNotEqualTo(String value) {
             addCriterion("SA_Default <>", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultGreaterThan(Byte value) {
+        public Criteria andSaDefaultGreaterThan(String value) {
             addCriterion("SA_Default >", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultGreaterThanOrEqualTo(Byte value) {
+        public Criteria andSaDefaultGreaterThanOrEqualTo(String value) {
             addCriterion("SA_Default >=", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultLessThan(Byte value) {
+        public Criteria andSaDefaultLessThan(String value) {
             addCriterion("SA_Default <", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultLessThanOrEqualTo(Byte value) {
+        public Criteria andSaDefaultLessThanOrEqualTo(String value) {
             addCriterion("SA_Default <=", value, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultIn(List<Byte> values) {
+        public Criteria andSaDefaultLike(String value) {
+            addCriterion("SA_Default like", value, "saDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaDefaultNotLike(String value) {
+            addCriterion("SA_Default not like", value, "saDefault");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaDefaultIn(List<String> values) {
             addCriterion("SA_Default in", values, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultNotIn(List<Byte> values) {
+        public Criteria andSaDefaultNotIn(List<String> values) {
             addCriterion("SA_Default not in", values, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultBetween(Byte value1, Byte value2) {
+        public Criteria andSaDefaultBetween(String value1, String value2) {
             addCriterion("SA_Default between", value1, value2, "saDefault");
             return (Criteria) this;
         }
 
-        public Criteria andSaDefaultNotBetween(Byte value1, Byte value2) {
+        public Criteria andSaDefaultNotBetween(String value1, String value2) {
             addCriterion("SA_Default not between", value1, value2, "saDefault");
             return (Criteria) this;
         }

@@ -7,9 +7,9 @@ public class InOrder {
 
     private Float iTotalmoney;
 
-    private Byte iGroup;
+    private String iGroup;
 
-    private Byte iPay;
+    private String iPay;
 
     private Date iBegintime;
 
@@ -17,7 +17,7 @@ public class InOrder {
 
     private Date iTranstime;
 
-    public InOrder(String iId, Float iTotalmoney, Byte iGroup, Byte iPay, Date iBegintime, Date iCanceltime, Date iTranstime) {
+    public InOrder(String iId, Float iTotalmoney, String iGroup, String iPay, Date iBegintime, Date iCanceltime, Date iTranstime) {
         this.iId = iId;
         this.iTotalmoney = iTotalmoney;
         this.iGroup = iGroup;
@@ -47,20 +47,20 @@ public class InOrder {
         this.iTotalmoney = iTotalmoney;
     }
 
-    public Byte getiGroup() {
+    public String getiGroup() {
         return iGroup;
     }
 
-    public void setiGroup(Byte iGroup) {
-        this.iGroup = iGroup;
+    public void setiGroup(String iGroup) {
+        this.iGroup = iGroup == null ? null : iGroup.trim();
     }
 
-    public Byte getiPay() {
+    public String getiPay() {
         return iPay;
     }
 
-    public void setiPay(Byte iPay) {
-        this.iPay = iPay;
+    public void setiPay(String iPay) {
+        this.iPay = iPay == null ? null : iPay.trim();
     }
 
     public Date getiBegintime() {

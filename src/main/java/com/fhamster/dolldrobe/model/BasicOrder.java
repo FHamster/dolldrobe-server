@@ -21,9 +21,9 @@ public class BasicOrder {
 
     private Float tpmoney;
 
-    private Byte totalpayment;
+    private String totalpayment;
 
-    public BasicOrder(String oNum, String uAccountnumber, Date oFtime, Date oStime, Date oEtime, Date oRtime, Date oPtime, Date oCtime, Float tpmoney, Byte totalpayment) {
+    public BasicOrder(String oNum, String uAccountnumber, Date oFtime, Date oStime, Date oEtime, Date oRtime, Date oPtime, Date oCtime, Float tpmoney, String totalpayment) {
         this.oNum = oNum;
         this.uAccountnumber = uAccountnumber;
         this.oFtime = oFtime;
@@ -112,11 +112,11 @@ public class BasicOrder {
         this.tpmoney = tpmoney;
     }
 
-    public Byte getTotalpayment() {
+    public String getTotalpayment() {
         return totalpayment;
     }
 
-    public void setTotalpayment(Byte totalpayment) {
-        this.totalpayment = totalpayment;
+    public void setTotalpayment(String totalpayment) {
+        this.totalpayment = totalpayment == null ? null : totalpayment.trim();
     }
 }

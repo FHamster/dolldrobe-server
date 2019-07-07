@@ -8,9 +8,10 @@ spring:
   #数据源配置
   datasource:
     #    url: jdbc:mysql://localhost:3306/dolldrobe?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+#    url: jdbc:mysql://localhost:3306/dolldrobe?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     url: jdbc:mysql://114.116.39.130:3306/dolldrobe?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
-    #    password: root
+#    password: root
     password: Gaoxin459716010@163
     driver-class-name: com.mysql.cj.jdbc.Driver
 

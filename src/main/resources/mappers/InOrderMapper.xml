@@ -5,8 +5,8 @@
     <constructor >
       <idArg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_TotalMoney" jdbcType="REAL" javaType="java.lang.Float" />
-      <arg column="I_Group" jdbcType="TINYINT" javaType="java.lang.Byte" />
-      <arg column="I_Pay" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="I_Group" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="I_Pay" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_BeginTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="I_CancelTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="I_TransTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -107,8 +107,8 @@
     insert into inorder (I_Id, I_TotalMoney, I_Group, 
       I_Pay, I_BeginTime, I_CancelTime, 
       I_TransTime)
-    values (#{iId,jdbcType=VARCHAR}, #{iTotalmoney,jdbcType=REAL}, #{iGroup,jdbcType=TINYINT}, 
-      #{iPay,jdbcType=TINYINT}, #{iBegintime,jdbcType=TIMESTAMP}, #{iCanceltime,jdbcType=TIMESTAMP}, 
+    values (#{iId,jdbcType=VARCHAR}, #{iTotalmoney,jdbcType=REAL}, #{iGroup,jdbcType=VARCHAR}, 
+      #{iPay,jdbcType=VARCHAR}, #{iBegintime,jdbcType=TIMESTAMP}, #{iCanceltime,jdbcType=TIMESTAMP}, 
       #{iTranstime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.InOrder" >
@@ -144,10 +144,10 @@
         #{iTotalmoney,jdbcType=REAL},
       </if>
       <if test="iGroup != null" >
-        #{iGroup,jdbcType=TINYINT},
+        #{iGroup,jdbcType=VARCHAR},
       </if>
       <if test="iPay != null" >
-        #{iPay,jdbcType=TINYINT},
+        #{iPay,jdbcType=VARCHAR},
       </if>
       <if test="iBegintime != null" >
         #{iBegintime,jdbcType=TIMESTAMP},
@@ -176,10 +176,10 @@
         I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
       </if>
       <if test="record.iGroup != null" >
-        I_Group = #{record.iGroup,jdbcType=TINYINT},
+        I_Group = #{record.iGroup,jdbcType=VARCHAR},
       </if>
       <if test="record.iPay != null" >
-        I_Pay = #{record.iPay,jdbcType=TINYINT},
+        I_Pay = #{record.iPay,jdbcType=VARCHAR},
       </if>
       <if test="record.iBegintime != null" >
         I_BeginTime = #{record.iBegintime,jdbcType=TIMESTAMP},
@@ -199,8 +199,8 @@
     update inorder
     set I_Id = #{record.iId,jdbcType=VARCHAR},
       I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
-      I_Group = #{record.iGroup,jdbcType=TINYINT},
-      I_Pay = #{record.iPay,jdbcType=TINYINT},
+      I_Group = #{record.iGroup,jdbcType=VARCHAR},
+      I_Pay = #{record.iPay,jdbcType=VARCHAR},
       I_BeginTime = #{record.iBegintime,jdbcType=TIMESTAMP},
       I_CancelTime = #{record.iCanceltime,jdbcType=TIMESTAMP},
       I_TransTime = #{record.iTranstime,jdbcType=TIMESTAMP}
@@ -215,10 +215,10 @@
         I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
       </if>
       <if test="iGroup != null" >
-        I_Group = #{iGroup,jdbcType=TINYINT},
+        I_Group = #{iGroup,jdbcType=VARCHAR},
       </if>
       <if test="iPay != null" >
-        I_Pay = #{iPay,jdbcType=TINYINT},
+        I_Pay = #{iPay,jdbcType=VARCHAR},
       </if>
       <if test="iBegintime != null" >
         I_BeginTime = #{iBegintime,jdbcType=TIMESTAMP},
@@ -235,8 +235,8 @@
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.InOrder" >
     update inorder
     set I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
-      I_Group = #{iGroup,jdbcType=TINYINT},
-      I_Pay = #{iPay,jdbcType=TINYINT},
+      I_Group = #{iGroup,jdbcType=VARCHAR},
+      I_Pay = #{iPay,jdbcType=VARCHAR},
       I_BeginTime = #{iBegintime,jdbcType=TIMESTAMP},
       I_CancelTime = #{iCanceltime,jdbcType=TIMESTAMP},
       I_TransTime = #{iTranstime,jdbcType=TIMESTAMP}

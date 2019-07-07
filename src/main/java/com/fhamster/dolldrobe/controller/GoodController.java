@@ -31,7 +31,6 @@ public class GoodController {
      * @return List 商品列表
      */
     @GetMapping("/GoodPage")
-    @UserLoginToken
     public List<Commodity> getGoodPage(
             HttpServletRequest request,
             @RequestParam(required = false, defaultValue = "") String keyWord,
@@ -39,9 +38,8 @@ public class GoodController {
             @RequestParam(required = false, defaultValue = "5") int pageSize
     ) {
 
-        User user = (User) request.getAttribute("user");
-        System.out.println(user.getuAccountnumber());
-        return service.getGood(keyWord, startPage, pageSize);
+        List<Commodity> good = service.getGood(keyWord, startPage, pageSize);
+        return good;
     }
 
     /**
@@ -59,7 +57,7 @@ public class GoodController {
             @RequestParam(required = false, defaultValue = "") String keyWord,
             @RequestParam(required = false, defaultValue = "1") int startPage,
             @RequestParam(required = false, defaultValue = "5") int pageSize,
-            @RequestParam String order,
+            @RequestParam(required = false, defaultValue = "C_Num") String order,
             @RequestParam(required = false, defaultValue = "true") boolean isAsc
     ) {
 

@@ -7,18 +7,15 @@ public class Commodity {
 
     private String sNum;
 
-    private String skeSNum;
-
     private String cName;
 
     private Date cEndtime;
 
     private Integer cMaxmoney;
 
-    public Commodity(String cNum, String sNum, String skeSNum, String cName, Date cEndtime, Integer cMaxmoney) {
+    public Commodity(String cNum, String sNum, String cName, Date cEndtime, Integer cMaxmoney) {
         this.cNum = cNum;
         this.sNum = sNum;
-        this.skeSNum = skeSNum;
         this.cName = cName;
         this.cEndtime = cEndtime;
         this.cMaxmoney = cMaxmoney;
@@ -42,14 +39,6 @@ public class Commodity {
 
     public void setsNum(String sNum) {
         this.sNum = sNum == null ? null : sNum.trim();
-    }
-
-    public String getSkeSNum() {
-        return skeSNum;
-    }
-
-    public void setSkeSNum(String skeSNum) {
-        this.skeSNum = skeSNum == null ? null : skeSNum.trim();
     }
 
     public String getcName() {

@@ -7,7 +7,7 @@
       <arg column="AR_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="SA_Detail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="SA_Default" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="SA_Default" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -105,7 +105,7 @@
     insert into shippingaddress (SA_Num, AR_Num, U_AccountNumber, 
       SA_Detail, SA_Default)
     values (#{saNum,jdbcType=VARCHAR}, #{arNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, 
-      #{saDetail,jdbcType=VARCHAR}, #{saDefault,jdbcType=TINYINT})
+      #{saDetail,jdbcType=VARCHAR}, #{saDefault,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.ShippingAddress" >
     insert into shippingaddress
@@ -140,7 +140,7 @@
         #{saDetail,jdbcType=VARCHAR},
       </if>
       <if test="saDefault != null" >
-        #{saDefault,jdbcType=TINYINT},
+        #{saDefault,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -166,7 +166,7 @@
         SA_Detail = #{record.saDetail,jdbcType=VARCHAR},
       </if>
       <if test="record.saDefault != null" >
-        SA_Default = #{record.saDefault,jdbcType=TINYINT},
+        SA_Default = #{record.saDefault,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -179,7 +179,7 @@
       AR_Num = #{record.arNum,jdbcType=VARCHAR},
       U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       SA_Detail = #{record.saDetail,jdbcType=VARCHAR},
-      SA_Default = #{record.saDefault,jdbcType=TINYINT}
+      SA_Default = #{record.saDefault,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -197,7 +197,7 @@
         SA_Detail = #{saDetail,jdbcType=VARCHAR},
       </if>
       <if test="saDefault != null" >
-        SA_Default = #{saDefault,jdbcType=TINYINT},
+        SA_Default = #{saDefault,jdbcType=VARCHAR},
       </if>
     </set>
     where SA_Num = #{saNum,jdbcType=VARCHAR}
@@ -207,7 +207,7 @@
     set AR_Num = #{arNum,jdbcType=VARCHAR},
       U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
       SA_Detail = #{saDetail,jdbcType=VARCHAR},
-      SA_Default = #{saDefault,jdbcType=TINYINT}
+      SA_Default = #{saDefault,jdbcType=VARCHAR}
     where SA_Num = #{saNum,jdbcType=VARCHAR}
   </update>
 </mapper>

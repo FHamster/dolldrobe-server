@@ -675,52 +675,62 @@ public class BasicOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentEqualTo(Byte value) {
+        public Criteria andTotalpaymentEqualTo(String value) {
             addCriterion("TotalPayment =", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentNotEqualTo(Byte value) {
+        public Criteria andTotalpaymentNotEqualTo(String value) {
             addCriterion("TotalPayment <>", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentGreaterThan(Byte value) {
+        public Criteria andTotalpaymentGreaterThan(String value) {
             addCriterion("TotalPayment >", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentGreaterThanOrEqualTo(Byte value) {
+        public Criteria andTotalpaymentGreaterThanOrEqualTo(String value) {
             addCriterion("TotalPayment >=", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentLessThan(Byte value) {
+        public Criteria andTotalpaymentLessThan(String value) {
             addCriterion("TotalPayment <", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentLessThanOrEqualTo(Byte value) {
+        public Criteria andTotalpaymentLessThanOrEqualTo(String value) {
             addCriterion("TotalPayment <=", value, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentIn(List<Byte> values) {
+        public Criteria andTotalpaymentLike(String value) {
+            addCriterion("TotalPayment like", value, "totalpayment");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalpaymentNotLike(String value) {
+            addCriterion("TotalPayment not like", value, "totalpayment");
+            return (Criteria) this;
+        }
+
+        public Criteria andTotalpaymentIn(List<String> values) {
             addCriterion("TotalPayment in", values, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentNotIn(List<Byte> values) {
+        public Criteria andTotalpaymentNotIn(List<String> values) {
             addCriterion("TotalPayment not in", values, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentBetween(Byte value1, Byte value2) {
+        public Criteria andTotalpaymentBetween(String value1, String value2) {
             addCriterion("TotalPayment between", value1, value2, "totalpayment");
             return (Criteria) this;
         }
 
-        public Criteria andTotalpaymentNotBetween(Byte value1, Byte value2) {
+        public Criteria andTotalpaymentNotBetween(String value1, String value2) {
             addCriterion("TotalPayment not between", value1, value2, "totalpayment");
             return (Criteria) this;
         }

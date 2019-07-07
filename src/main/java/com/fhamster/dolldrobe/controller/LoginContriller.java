@@ -5,6 +5,7 @@ import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.service.UserService;
 import com.fhamster.dolldrobe.util.JwtUtil;
 import com.fhamster.dolldrobe.util.PassToken;
+import com.fhamster.dolldrobe.util.UserLoginToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,7 +27,7 @@ public class LoginContriller {
     @PassToken
     public DDToken getToken(@RequestBody User user, HttpServletResponse response) {
 //        User user1 = JwtUtil.encodeLoginForm(user.getuPsw());
-
+        //TODO 用户名不存在
         String acc = user.getuAccountnumber();
         String psw = user.getuPsw();
 
@@ -48,7 +49,7 @@ public class LoginContriller {
     }
 
     @PostMapping("/checktoken")
-    @PassToken
+    @UserLoginToken
     public User getToken2(@RequestBody Map<String, String> map) {
 
         return new User();

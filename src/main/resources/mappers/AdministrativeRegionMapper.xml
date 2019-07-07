@@ -5,7 +5,7 @@
     <constructor >
       <idArg column="AR_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="AR_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="AR_isUse" jdbcType="TINYINT" javaType="java.lang.Byte" />
+      <arg column="AR_isUse" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -102,7 +102,7 @@
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.AdministrativeRegion" >
     insert into administrativeregion (AR_Num, AR_Name, AR_isUse
       )
-    values (#{arNum,jdbcType=VARCHAR}, #{arName,jdbcType=VARCHAR}, #{arIsuse,jdbcType=TINYINT}
+    values (#{arNum,jdbcType=VARCHAR}, #{arName,jdbcType=VARCHAR}, #{arIsuse,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.AdministrativeRegion" >
@@ -126,7 +126,7 @@
         #{arName,jdbcType=VARCHAR},
       </if>
       <if test="arIsuse != null" >
-        #{arIsuse,jdbcType=TINYINT},
+        #{arIsuse,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -146,7 +146,7 @@
         AR_Name = #{record.arName,jdbcType=VARCHAR},
       </if>
       <if test="record.arIsuse != null" >
-        AR_isUse = #{record.arIsuse,jdbcType=TINYINT},
+        AR_isUse = #{record.arIsuse,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -157,7 +157,7 @@
     update administrativeregion
     set AR_Num = #{record.arNum,jdbcType=VARCHAR},
       AR_Name = #{record.arName,jdbcType=VARCHAR},
-      AR_isUse = #{record.arIsuse,jdbcType=TINYINT}
+      AR_isUse = #{record.arIsuse,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,7 +169,7 @@
         AR_Name = #{arName,jdbcType=VARCHAR},
       </if>
       <if test="arIsuse != null" >
-        AR_isUse = #{arIsuse,jdbcType=TINYINT},
+        AR_isUse = #{arIsuse,jdbcType=VARCHAR},
       </if>
     </set>
     where AR_Num = #{arNum,jdbcType=VARCHAR}
@@ -177,7 +177,7 @@
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.AdministrativeRegion" >
     update administrativeregion
     set AR_Name = #{arName,jdbcType=VARCHAR},
-      AR_isUse = #{arIsuse,jdbcType=TINYINT}
+      AR_isUse = #{arIsuse,jdbcType=VARCHAR}
     where AR_Num = #{arNum,jdbcType=VARCHAR}
   </update>
 </mapper>

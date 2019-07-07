@@ -5,9 +5,9 @@ public class AdministrativeRegion {
 
     private String arName;
 
-    private Byte arIsuse;
+    private String arIsuse;
 
-    public AdministrativeRegion(String arNum, String arName, Byte arIsuse) {
+    public AdministrativeRegion(String arNum, String arName, String arIsuse) {
         this.arNum = arNum;
         this.arName = arName;
         this.arIsuse = arIsuse;
@@ -33,11 +33,11 @@ public class AdministrativeRegion {
         this.arName = arName == null ? null : arName.trim();
     }
 
-    public Byte getArIsuse() {
+    public String getArIsuse() {
         return arIsuse;
     }
 
-    public void setArIsuse(Byte arIsuse) {
-        this.arIsuse = arIsuse;
+    public void setArIsuse(String arIsuse) {
+        this.arIsuse = arIsuse == null ? null : arIsuse.trim();
     }
 }

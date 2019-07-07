@@ -245,52 +245,62 @@ public class InOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andIGroupEqualTo(Byte value) {
+        public Criteria andIGroupEqualTo(String value) {
             addCriterion("I_Group =", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupNotEqualTo(Byte value) {
+        public Criteria andIGroupNotEqualTo(String value) {
             addCriterion("I_Group <>", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupGreaterThan(Byte value) {
+        public Criteria andIGroupGreaterThan(String value) {
             addCriterion("I_Group >", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIGroupGreaterThanOrEqualTo(String value) {
             addCriterion("I_Group >=", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupLessThan(Byte value) {
+        public Criteria andIGroupLessThan(String value) {
             addCriterion("I_Group <", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupLessThanOrEqualTo(Byte value) {
+        public Criteria andIGroupLessThanOrEqualTo(String value) {
             addCriterion("I_Group <=", value, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupIn(List<Byte> values) {
+        public Criteria andIGroupLike(String value) {
+            addCriterion("I_Group like", value, "iGroup");
+            return (Criteria) this;
+        }
+
+        public Criteria andIGroupNotLike(String value) {
+            addCriterion("I_Group not like", value, "iGroup");
+            return (Criteria) this;
+        }
+
+        public Criteria andIGroupIn(List<String> values) {
             addCriterion("I_Group in", values, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupNotIn(List<Byte> values) {
+        public Criteria andIGroupNotIn(List<String> values) {
             addCriterion("I_Group not in", values, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupBetween(Byte value1, Byte value2) {
+        public Criteria andIGroupBetween(String value1, String value2) {
             addCriterion("I_Group between", value1, value2, "iGroup");
             return (Criteria) this;
         }
 
-        public Criteria andIGroupNotBetween(Byte value1, Byte value2) {
+        public Criteria andIGroupNotBetween(String value1, String value2) {
             addCriterion("I_Group not between", value1, value2, "iGroup");
             return (Criteria) this;
         }
@@ -305,52 +315,62 @@ public class InOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andIPayEqualTo(Byte value) {
+        public Criteria andIPayEqualTo(String value) {
             addCriterion("I_Pay =", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayNotEqualTo(Byte value) {
+        public Criteria andIPayNotEqualTo(String value) {
             addCriterion("I_Pay <>", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayGreaterThan(Byte value) {
+        public Criteria andIPayGreaterThan(String value) {
             addCriterion("I_Pay >", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayGreaterThanOrEqualTo(Byte value) {
+        public Criteria andIPayGreaterThanOrEqualTo(String value) {
             addCriterion("I_Pay >=", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayLessThan(Byte value) {
+        public Criteria andIPayLessThan(String value) {
             addCriterion("I_Pay <", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayLessThanOrEqualTo(Byte value) {
+        public Criteria andIPayLessThanOrEqualTo(String value) {
             addCriterion("I_Pay <=", value, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayIn(List<Byte> values) {
+        public Criteria andIPayLike(String value) {
+            addCriterion("I_Pay like", value, "iPay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIPayNotLike(String value) {
+            addCriterion("I_Pay not like", value, "iPay");
+            return (Criteria) this;
+        }
+
+        public Criteria andIPayIn(List<String> values) {
             addCriterion("I_Pay in", values, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayNotIn(List<Byte> values) {
+        public Criteria andIPayNotIn(List<String> values) {
             addCriterion("I_Pay not in", values, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayBetween(Byte value1, Byte value2) {
+        public Criteria andIPayBetween(String value1, String value2) {
             addCriterion("I_Pay between", value1, value2, "iPay");
             return (Criteria) this;
         }
 
-        public Criteria andIPayNotBetween(Byte value1, Byte value2) {
+        public Criteria andIPayNotBetween(String value1, String value2) {
             addCriterion("I_Pay not between", value1, value2, "iPay");
             return (Criteria) this;
         }

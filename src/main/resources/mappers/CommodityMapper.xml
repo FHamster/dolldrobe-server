@@ -5,7 +5,6 @@
     <constructor >
       <idArg column="C_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="Ske_S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_EndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="C_MaxMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -70,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_Num, S_Num, Ske_S_Num, C_Name, C_EndTime, C_MaxMoney
+    C_Num, S_Num, C_Name, C_EndTime, C_MaxMoney
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.CommodityExample" >
     select
@@ -103,12 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Commodity" >
-    insert into commodity (C_Num, S_Num, Ske_S_Num, 
-      C_Name, C_EndTime, C_MaxMoney
-      )
-    values (#{cNum,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{skeSNum,jdbcType=VARCHAR}, 
-      #{cName,jdbcType=VARCHAR}, #{cEndtime,jdbcType=TIMESTAMP}, #{cMaxmoney,jdbcType=INTEGER}
-      )
+    insert into commodity (C_Num, S_Num, C_Name, 
+      C_EndTime, C_MaxMoney)
+    values (#{cNum,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
+      #{cEndtime,jdbcType=TIMESTAMP}, #{cMaxmoney,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Commodity" >
     insert into commodity
@@ -118,9 +115,6 @@
       </if>
       <if test="sNum != null" >
         S_Num,
-      </if>
-      <if test="skeSNum != null" >
-        Ske_S_Num,
       </if>
       <if test="cName != null" >
         C_Name,
@@ -138,9 +132,6 @@
       </if>
       <if test="sNum != null" >
         #{sNum,jdbcType=VARCHAR},
-      </if>
-      <if test="skeSNum != null" >
-        #{skeSNum,jdbcType=VARCHAR},
       </if>
       <if test="cName != null" >
         #{cName,jdbcType=VARCHAR},
@@ -168,9 +159,6 @@
       <if test="record.sNum != null" >
         S_Num = #{record.sNum,jdbcType=VARCHAR},
       </if>
-      <if test="record.skeSNum != null" >
-        Ske_S_Num = #{record.skeSNum,jdbcType=VARCHAR},
-      </if>
       <if test="record.cName != null" >
         C_Name = #{record.cName,jdbcType=VARCHAR},
       </if>
@@ -189,7 +177,6 @@
     update commodity
     set C_Num = #{record.cNum,jdbcType=VARCHAR},
       S_Num = #{record.sNum,jdbcType=VARCHAR},
-      Ske_S_Num = #{record.skeSNum,jdbcType=VARCHAR},
       C_Name = #{record.cName,jdbcType=VARCHAR},
       C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
       C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER}
@@ -202,9 +189,6 @@
     <set >
       <if test="sNum != null" >
         S_Num = #{sNum,jdbcType=VARCHAR},
-      </if>
-      <if test="skeSNum != null" >
-        Ske_S_Num = #{skeSNum,jdbcType=VARCHAR},
       </if>
       <if test="cName != null" >
         C_Name = #{cName,jdbcType=VARCHAR},
@@ -221,7 +205,6 @@
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Commodity" >
     update commodity
     set S_Num = #{sNum,jdbcType=VARCHAR},
-      Ske_S_Num = #{skeSNum,jdbcType=VARCHAR},
       C_Name = #{cName,jdbcType=VARCHAR},
       C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
       C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER}
