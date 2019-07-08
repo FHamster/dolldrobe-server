@@ -8,6 +8,7 @@
       <arg column="C_Specification" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_Price" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="C_Inventory" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SKU_img" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    SKU_Id, C_Num, C_Specification, C_Price, C_Inventory
+    SKU_Id, C_Num, C_Specification, C_Price, C_Inventory, SKU_img
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.SKUExample" >
     select
@@ -103,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.SKU" >
     insert into sku (SKU_Id, C_Num, C_Specification, 
-      C_Price, C_Inventory)
+      C_Price, C_Inventory, SKU_img
+      )
     values (#{skuId,jdbcType=VARCHAR}, #{cNum,jdbcType=VARCHAR}, #{cSpecification,jdbcType=VARCHAR}, 
-      #{cPrice,jdbcType=REAL}, #{cInventory,jdbcType=INTEGER})
+      #{cPrice,jdbcType=REAL}, #{cInventory,jdbcType=INTEGER}, #{skuImg,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.SKU" >
     insert into sku
@@ -125,6 +128,9 @@
       <if test="cInventory != null" >
         C_Inventory,
       </if>
+      <if test="skuImg != null" >
+        SKU_img,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="skuId != null" >
@@ -141,6 +147,9 @@
       </if>
       <if test="cInventory != null" >
         #{cInventory,jdbcType=INTEGER},
+      </if>
+      <if test="skuImg != null" >
+        #{skuImg,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -168,6 +177,9 @@
       <if test="record.cInventory != null" >
         C_Inventory = #{record.cInventory,jdbcType=INTEGER},
       </if>
+      <if test="record.skuImg != null" >
+        SKU_img = #{record.skuImg,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -179,7 +191,8 @@
       C_Num = #{record.cNum,jdbcType=VARCHAR},
       C_Specification = #{record.cSpecification,jdbcType=VARCHAR},
       C_Price = #{record.cPrice,jdbcType=REAL},
-      C_Inventory = #{record.cInventory,jdbcType=INTEGER}
+      C_Inventory = #{record.cInventory,jdbcType=INTEGER},
+      SKU_img = #{record.skuImg,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,6 +212,9 @@
       <if test="cInventory != null" >
         C_Inventory = #{cInventory,jdbcType=INTEGER},
       </if>
+      <if test="skuImg != null" >
+        SKU_img = #{skuImg,jdbcType=VARCHAR},
+      </if>
     </set>
     where SKU_Id = #{skuId,jdbcType=VARCHAR}
   </update>
@@ -207,7 +223,8 @@
     set C_Num = #{cNum,jdbcType=VARCHAR},
       C_Specification = #{cSpecification,jdbcType=VARCHAR},
       C_Price = #{cPrice,jdbcType=REAL},
-      C_Inventory = #{cInventory,jdbcType=INTEGER}
+      C_Inventory = #{cInventory,jdbcType=INTEGER},
+      SKU_img = #{skuImg,jdbcType=VARCHAR}
     where SKU_Id = #{skuId,jdbcType=VARCHAR}
   </update>
 </mapper>

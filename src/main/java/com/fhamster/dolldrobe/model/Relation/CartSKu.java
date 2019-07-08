@@ -1,20 +1,11 @@
 package com.fhamster.dolldrobe.model.Relation;
 
-
 import com.fhamster.dolldrobe.model.SKU;
 import com.fhamster.dolldrobe.model.ShoppingCart;
 
 public class CartSKu {
-    ShoppingCart cart;
-    SKU sku;
-
-    public CartSKu() {
-    }
-
-    public CartSKu(ShoppingCart cart, SKU sku) {
-        this.cart = cart;
-        this.sku = sku;
-    }
+    private ShoppingCart cart;
+    private SKU sku;
 
     public ShoppingCart getCart() {
         return cart;
@@ -32,11 +23,11 @@ public class CartSKu {
         this.sku = sku;
     }
 
-    @Override
-    public String toString() {
-        return "CartSKu{" +
-                "cart=" + cart +
-                ", sku=" + sku +
-                '}';
+    public CartSKu(ShoppingCart cart, SKU sku) {
+        this.cart = cart;
+        this.sku = sku;
+    }
+
+    public CartSKu() {
     }
 }

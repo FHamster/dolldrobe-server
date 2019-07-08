@@ -433,6 +433,76 @@ public class SKUExample {
             addCriterion("C_Inventory not between", value1, value2, "cInventory");
             return (Criteria) this;
         }
+
+        public Criteria andSkuImgIsNull() {
+            addCriterion("SKU_img is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgIsNotNull() {
+            addCriterion("SKU_img is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgEqualTo(String value) {
+            addCriterion("SKU_img =", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgNotEqualTo(String value) {
+            addCriterion("SKU_img <>", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgGreaterThan(String value) {
+            addCriterion("SKU_img >", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgGreaterThanOrEqualTo(String value) {
+            addCriterion("SKU_img >=", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgLessThan(String value) {
+            addCriterion("SKU_img <", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgLessThanOrEqualTo(String value) {
+            addCriterion("SKU_img <=", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgLike(String value) {
+            addCriterion("SKU_img like", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgNotLike(String value) {
+            addCriterion("SKU_img not like", value, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgIn(List<String> values) {
+            addCriterion("SKU_img in", values, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgNotIn(List<String> values) {
+            addCriterion("SKU_img not in", values, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgBetween(String value1, String value2) {
+            addCriterion("SKU_img between", value1, value2, "skuImg");
+            return (Criteria) this;
+        }
+
+        public Criteria andSkuImgNotBetween(String value1, String value2) {
+            addCriterion("SKU_img not between", value1, value2, "skuImg");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

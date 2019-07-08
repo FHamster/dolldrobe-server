@@ -11,12 +11,15 @@ public class SKU {
 
     private Integer cInventory;
 
-    public SKU(String skuId, String cNum, String cSpecification, Float cPrice, Integer cInventory) {
+    private String skuImg;
+
+    public SKU(String skuId, String cNum, String cSpecification, Float cPrice, Integer cInventory, String skuImg) {
         this.skuId = skuId;
         this.cNum = cNum;
         this.cSpecification = cSpecification;
         this.cPrice = cPrice;
         this.cInventory = cInventory;
+        this.skuImg = skuImg;
     }
 
     public SKU() {
@@ -61,5 +64,13 @@ public class SKU {
 
     public void setcInventory(Integer cInventory) {
         this.cInventory = cInventory;
+    }
+
+    public String getSkuImg() {
+        return skuImg;
+    }
+
+    public void setSkuImg(String skuImg) {
+        this.skuImg = skuImg == null ? null : skuImg.trim();
     }
 }

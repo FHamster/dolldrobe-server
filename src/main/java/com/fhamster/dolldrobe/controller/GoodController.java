@@ -1,8 +1,10 @@
 package com.fhamster.dolldrobe.controller;
 
 import com.fhamster.dolldrobe.model.Commodity;
+import com.fhamster.dolldrobe.model.SKU;
 import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.service.GoodService;
+import com.fhamster.dolldrobe.service.SkuService;
 import com.fhamster.dolldrobe.util.PassToken;
 import com.fhamster.dolldrobe.util.UserLoginToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class GoodController {
 
     @Autowired
     GoodService service;
+
+    @Autowired
+    SkuService skuService;
 
     /**
      * 获取商品页面
@@ -66,6 +71,19 @@ public class GoodController {
         return service.getGood(keyWord, startPage, pageSize, order, isAsc);
     }
 
+
+    /**
+     * 通过商品id Cnum获取库存信息
+     *
+     * @param CNum 商品id
+     * @return 商品的库存列表
+     */
+    @GetMapping("/SKU")
+    public List<SKU> getGoodPageByOrder(
+            @RequestParam String CNum
+    ) {
+        return skuService.getSkuByCNum(CNum);
+    }
 
 }
 

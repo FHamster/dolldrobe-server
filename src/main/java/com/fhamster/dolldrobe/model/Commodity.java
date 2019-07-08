@@ -13,12 +13,15 @@ public class Commodity {
 
     private Integer cMaxmoney;
 
-    public Commodity(String cNum, String sNum, String cName, Date cEndtime, Integer cMaxmoney) {
+    private String cImg;
+
+    public Commodity(String cNum, String sNum, String cName, Date cEndtime, Integer cMaxmoney, String cImg) {
         this.cNum = cNum;
         this.sNum = sNum;
         this.cName = cName;
         this.cEndtime = cEndtime;
         this.cMaxmoney = cMaxmoney;
+        this.cImg = cImg;
     }
 
     public Commodity() {
@@ -63,5 +66,13 @@ public class Commodity {
 
     public void setcMaxmoney(Integer cMaxmoney) {
         this.cMaxmoney = cMaxmoney;
+    }
+
+    public String getcImg() {
+        return cImg;
+    }
+
+    public void setcImg(String cImg) {
+        this.cImg = cImg == null ? null : cImg.trim();
     }
 }

@@ -43,5 +43,15 @@ public class UserService {
         return n < 1;
     }
 
+    /**
+     * 向数据库中插入新的用户
+     * 要检查用户名重复
+     * @param user
+     */
+    public void addtUser(User user) {
+
+//todo        用户表中已存在该用户账号,抛出
+
+    }
 
 }
