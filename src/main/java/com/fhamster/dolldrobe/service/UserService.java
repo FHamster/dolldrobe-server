@@ -46,9 +46,21 @@ public class UserService {
     /**
      * 向数据库中插入新的用户
      * 要检查用户名重复
-     * @param user
+     *
+     * @param user user对象
      */
     public void addtUser(User user) {
+        User test = dao.selectByPrimaryKey(user.getuAccountnumber());
+
+
+        try {
+            if (!test.getuAccountnumber().equals(user.getuAccountnumber())) {
+                dao.insertSelective(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
 //todo        用户表中已存在该用户账号,抛出
 

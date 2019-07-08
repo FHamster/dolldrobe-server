@@ -18,8 +18,8 @@ public class SkuService {
 
     /**
      * 通过商品id获取该商品的库存信息
-     * @param CNum
-     * @return
+     * @param CNum 商品id
+     * @return 查询到的商品信息
      */
     public List<SKU> getSkuByCNum(String CNum) {
         SKUExample example = new SKUExample();

@@ -18,8 +18,16 @@ public class FPageServiceTest {
                 .forEach(System.out::println);
     }
 
+    /**
+     *
+     */
     @Test
     public void insertFPage() {
         service.InsertFPage("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH");
+    }
+
+    @Test
+    public void deletepage() {
+        service.Del("","");
     }
 }

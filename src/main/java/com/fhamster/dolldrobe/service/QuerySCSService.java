@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 public class QuerySCSService {
+
     @Autowired
     ShoppingCartMapper scdao;
     @Autowired
@@ -24,6 +25,11 @@ public class QuerySCSService {
 //    @Autowired
 //    UserMapper userdao;
 
+    /**
+     * 输入用户账号获取购物车信息
+     * @param UAcc 用户账号
+     * @return 购物车信息
+     */
     public List<CartSKu> getCartSKu(String UAcc) {
         //获取该用户的购物车
         ShoppingCartExample example = new ShoppingCartExample();
