@@ -43,14 +43,12 @@ public class SCService {
     }
 
     /**
-     * 根据库存商品id，用户账号删除购物车中商品
-     *
-     * @param sku_id  商品库存id
-     * @param userAcc 用户账号
+     *  根据库存商品id，用户账号删除购物车中商品
+     * @param cart 需要删除的购物车信息
      */
-    public void deletSC(String sku_id, String userAcc) {
+    public void deletSC(ShoppingCart cart) {
 //        查询到购物车内商品信息
-        ShoppingCartKey key = new ShoppingCartKey(sku_id, userAcc);
+        ShoppingCartKey key = new ShoppingCartKey(cart.getSkuId(),cart.getuAccountnumber());
         scdao.deleteByPrimaryKey(key);
     }
 

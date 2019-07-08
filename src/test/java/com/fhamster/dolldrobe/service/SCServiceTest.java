@@ -25,8 +25,10 @@ public class SCServiceTest {
 
     @Test
     public void deletesc() {
-        service.deletSC(" 0HGPFGMVEPOXO M56JO6UNFEN96KV7R","root");
-
+        ShoppingCart cart = new ShoppingCart();
+        cart.setuAccountnumber(" ");
+        cart.setSkuId(" ");
+        service.deletSC(cart);
     }
 
     @Test
