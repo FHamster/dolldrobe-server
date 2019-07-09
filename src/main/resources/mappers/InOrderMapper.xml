@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.InOrder" >
     <constructor >
       <idArg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_TotalMoney" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="I_Group" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="I_Pay" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    I_Id, I_TotalMoney, I_Group, I_Pay, I_BeginTime, I_CancelTime, I_TransTime
+    I_Id, U_AccountNumber, I_TotalMoney, I_Group, I_Pay, I_BeginTime, I_CancelTime, I_TransTime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.InOrderExample" >
     select
@@ -104,18 +105,21 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.InOrder" >
-    insert into inorder (I_Id, I_TotalMoney, I_Group, 
-      I_Pay, I_BeginTime, I_CancelTime, 
-      I_TransTime)
-    values (#{iId,jdbcType=VARCHAR}, #{iTotalmoney,jdbcType=REAL}, #{iGroup,jdbcType=VARCHAR}, 
-      #{iPay,jdbcType=VARCHAR}, #{iBegintime,jdbcType=TIMESTAMP}, #{iCanceltime,jdbcType=TIMESTAMP}, 
-      #{iTranstime,jdbcType=TIMESTAMP})
+    insert into inorder (I_Id, U_AccountNumber, I_TotalMoney, 
+      I_Group, I_Pay, I_BeginTime, 
+      I_CancelTime, I_TransTime)
+    values (#{iId,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, #{iTotalmoney,jdbcType=REAL}, 
+      #{iGroup,jdbcType=VARCHAR}, #{iPay,jdbcType=VARCHAR}, #{iBegintime,jdbcType=TIMESTAMP}, 
+      #{iCanceltime,jdbcType=TIMESTAMP}, #{iTranstime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.InOrder" >
     insert into inorder
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="iId != null" >
         I_Id,
+      </if>
+      <if test="uAccountnumber != null" >
+        U_AccountNumber,
       </if>
       <if test="iTotalmoney != null" >
         I_TotalMoney,
@@ -139,6 +143,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="iId != null" >
         #{iId,jdbcType=VARCHAR},
+      </if>
+      <if test="uAccountnumber != null" >
+        #{uAccountnumber,jdbcType=VARCHAR},
       </if>
       <if test="iTotalmoney != null" >
         #{iTotalmoney,jdbcType=REAL},
@@ -172,6 +179,9 @@
       <if test="record.iId != null" >
         I_Id = #{record.iId,jdbcType=VARCHAR},
       </if>
+      <if test="record.uAccountnumber != null" >
+        U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
+      </if>
       <if test="record.iTotalmoney != null" >
         I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
       </if>
@@ -198,6 +208,7 @@
   <update id="updateByExample" parameterType="map" >
     update inorder
     set I_Id = #{record.iId,jdbcType=VARCHAR},
+      U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       I_TotalMoney = #{record.iTotalmoney,jdbcType=REAL},
       I_Group = #{record.iGroup,jdbcType=VARCHAR},
       I_Pay = #{record.iPay,jdbcType=VARCHAR},
@@ -211,6 +222,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.InOrder" >
     update inorder
     <set >
+      <if test="uAccountnumber != null" >
+        U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      </if>
       <if test="iTotalmoney != null" >
         I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
       </if>
@@ -234,7 +248,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.InOrder" >
     update inorder
-    set I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
+    set U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
+      I_TotalMoney = #{iTotalmoney,jdbcType=REAL},
       I_Group = #{iGroup,jdbcType=VARCHAR},
       I_Pay = #{iPay,jdbcType=VARCHAR},
       I_BeginTime = #{iBegintime,jdbcType=TIMESTAMP},

@@ -21,9 +21,35 @@ public class UserService {
      * @return true 帐号与密码匹配返回 否则false
      */
     public boolean isPswMatch(String acc, String psw) {
+        try {
+            User user = dao.selectByPrimaryKey(acc);
+            if (user.getuPsw().equals(psw)) {
+                return true;
+            } else {
+                throw new Exception("用户名和密码不匹配");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-        User user = dao.selectByPrimaryKey(acc);
-        return user.getuPsw().equals(psw);
+
+    /**
+     * 检查用户帐号密码
+     *
+     * @param acc 帐号
+     * @param psw 密码
+     * @return true 帐号与密码匹配返回 否则false
+     */
+    public boolean isPswMatch2(String acc, String psw) {
+
+        UserExample example = new UserExample();
+        example.createCriteria()
+                .andUAccountnumberEqualTo(acc)
+                .andUPswEqualTo(psw);
+
+        return dao.selectByExampleWithBLOBs(example).size() > 0;
     }
 
     /**
@@ -54,16 +80,15 @@ public class UserService {
 
 
         try {
-            if (!test.getuAccountnumber().equals(user.getuAccountnumber())) {
+            if (test == null) {
                 dao.insertSelective(user);
+            } else {
+                //DONE 用户表中已存在该用户账号,抛出
+                throw new Exception("该用户帐号已经存在");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-//todo        用户表中已存在该用户账号,抛出
-
     }
 
 }

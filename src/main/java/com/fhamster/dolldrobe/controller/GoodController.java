@@ -17,7 +17,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/GoodPage")
-@PassToken
 public class GoodController {
 
     @Autowired
@@ -36,6 +35,7 @@ public class GoodController {
      * @return List 商品列表
      */
     @GetMapping("/GoodPage")
+    @PassToken
     public List<Commodity> getGoodPage(
             HttpServletRequest request,
             @RequestParam(required = false, defaultValue = "") String keyWord,
@@ -58,6 +58,7 @@ public class GoodController {
      * @return List 商品列表
      */
     @GetMapping("/GoodPageByOrder")
+    @PassToken
     public List<Commodity> getGoodPageByOrder(
             @RequestParam(required = false, defaultValue = "") String keyWord,
             @RequestParam(required = false, defaultValue = "1") int startPage,
@@ -79,6 +80,7 @@ public class GoodController {
      * @return 商品的库存列表
      */
     @GetMapping("/SKU")
+    @PassToken
     public List<SKU> getGoodPageByOrder(
             @RequestParam String CNum
     ) {

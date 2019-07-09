@@ -5,6 +5,8 @@ import java.util.Date;
 public class InOrder {
     private String iId;
 
+    private String uAccountnumber;
+
     private Float iTotalmoney;
 
     private String iGroup;
@@ -17,8 +19,9 @@ public class InOrder {
 
     private Date iTranstime;
 
-    public InOrder(String iId, Float iTotalmoney, String iGroup, String iPay, Date iBegintime, Date iCanceltime, Date iTranstime) {
+    public InOrder(String iId, String uAccountnumber, Float iTotalmoney, String iGroup, String iPay, Date iBegintime, Date iCanceltime, Date iTranstime) {
         this.iId = iId;
+        this.uAccountnumber = uAccountnumber;
         this.iTotalmoney = iTotalmoney;
         this.iGroup = iGroup;
         this.iPay = iPay;
@@ -37,6 +40,14 @@ public class InOrder {
 
     public void setiId(String iId) {
         this.iId = iId == null ? null : iId.trim();
+    }
+
+    public String getuAccountnumber() {
+        return uAccountnumber;
+    }
+
+    public void setuAccountnumber(String uAccountnumber) {
+        this.uAccountnumber = uAccountnumber == null ? null : uAccountnumber.trim();
     }
 
     public Float getiTotalmoney() {

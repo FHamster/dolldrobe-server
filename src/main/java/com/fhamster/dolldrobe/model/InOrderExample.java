@@ -175,6 +175,76 @@ public class InOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andUAccountnumberIsNull() {
+            addCriterion("U_AccountNumber is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberIsNotNull() {
+            addCriterion("U_AccountNumber is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberEqualTo(String value) {
+            addCriterion("U_AccountNumber =", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberNotEqualTo(String value) {
+            addCriterion("U_AccountNumber <>", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberGreaterThan(String value) {
+            addCriterion("U_AccountNumber >", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberGreaterThanOrEqualTo(String value) {
+            addCriterion("U_AccountNumber >=", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberLessThan(String value) {
+            addCriterion("U_AccountNumber <", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberLessThanOrEqualTo(String value) {
+            addCriterion("U_AccountNumber <=", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberLike(String value) {
+            addCriterion("U_AccountNumber like", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberNotLike(String value) {
+            addCriterion("U_AccountNumber not like", value, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberIn(List<String> values) {
+            addCriterion("U_AccountNumber in", values, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberNotIn(List<String> values) {
+            addCriterion("U_AccountNumber not in", values, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberBetween(String value1, String value2) {
+            addCriterion("U_AccountNumber between", value1, value2, "uAccountnumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andUAccountnumberNotBetween(String value1, String value2) {
+            addCriterion("U_AccountNumber not between", value1, value2, "uAccountnumber");
+            return (Criteria) this;
+        }
+
         public Criteria andITotalmoneyIsNull() {
             addCriterion("I_TotalMoney is null");
             return (Criteria) this;

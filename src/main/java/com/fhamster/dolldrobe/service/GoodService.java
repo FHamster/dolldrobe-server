@@ -12,6 +12,9 @@ import tk.mybatis.mapper.entity.Example;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 商品服务类
+ */
 @Service
 @Transactional
 public class GoodService {
@@ -34,7 +37,7 @@ public class GoodService {
                 .andCNameLike("%" + keyWord + "%");
 
         PageHelper.startPage(startPage, pageSize, "C_EndTime");
-        List<Commodity> list = dao.selectByExample(example);
+        List<Commodity> list = dao.selectByExampleWithBLOBs(example);
 
         return list;
     }
@@ -55,7 +58,7 @@ public class GoodService {
         List<Commodity> list;
 
         PageHelper.startPage(startPage, pageSize, order);
-        list = dao.selectByExample(example);
+        list = dao.selectByExampleWithBLOBs(example);
 
 
         return list;
@@ -74,14 +77,14 @@ public class GoodService {
         example.createCriteria()
                 .andCNameLike("%" + keyWord + "%");
         List<Commodity> list;
-
         PageHelper.startPage(startPage, pageSize, order);
-        list = dao.selectByExample(example);
+        list = dao.selectByExampleWithBLOBs(example);
 
 
         if (!isAsc) {
             Collections.reverse(list);
         }
+
         return list;
     }
 

@@ -22,8 +22,9 @@ public class FPageService {
     CommodityMapper comdao;
 
     /**
+     * 根据账户用户获取一个用户收藏夹
+     *
      * @param UAcc 用户账号
-     *根据账户用户获取一个用户收藏夹
      * @return 收藏夹表
      */
     public List<Commodity> getCom(String UAcc) {
@@ -44,25 +45,26 @@ public class FPageService {
 
 
     /**
+     * date获取当前时间
+     * 插入商品
      *
      * @param UAcc 用户账号
      * @param CNum 商品id
-     * date获取当前时间
-     * 插入商品
      */
-    public void InsertFPage(String UAcc,String CNum) {
+    public void InsertFPage(String UAcc, String CNum) {
         //获取当前日期
         Date date = new Date();
         //设置要获取到什么样的时间
         // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //获取String类型的时间
 //        String d = sdf.format(date);
-        FPageCommodity commodity = new FPageCommodity(CNum,UAcc,date);
+        FPageCommodity commodity = new FPageCommodity(CNum, UAcc, date);
         dao.insert(commodity);
     }
 
     /**
-     *通过输入商品id和用户账号，删除对应用户收藏夹中商品
+     * 通过输入商品id和用户账号，删除对应用户收藏夹中商品
+     *
      * @param CNum 用户id
      * @param UAcc 用户账号
      */

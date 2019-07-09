@@ -30,4 +30,5 @@ public class UserServiceTest {
         user.setuPsw("1234567");
         service.addtUser(user);
     }
+
 }

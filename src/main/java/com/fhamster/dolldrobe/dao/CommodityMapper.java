@@ -16,15 +16,21 @@ public interface CommodityMapper {
 
     int insertSelective(Commodity record);
 
+    List<Commodity> selectByExampleWithBLOBs(CommodityExample example);
+
     List<Commodity> selectByExample(CommodityExample example);
 
     Commodity selectByPrimaryKey(String cNum);
 
     int updateByExampleSelective(@Param("record") Commodity record, @Param("example") CommodityExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") Commodity record, @Param("example") CommodityExample example);
+
     int updateByExample(@Param("record") Commodity record, @Param("example") CommodityExample example);
 
     int updateByPrimaryKeySelective(Commodity record);
+
+    int updateByPrimaryKeyWithBLOBs(Commodity record);
 
     int updateByPrimaryKey(Commodity record);
 }

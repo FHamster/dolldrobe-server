@@ -3,8 +3,6 @@ package com.fhamster.dolldrobe.model;
 public class User {
     private String uAccountnumber;
 
-    private String iId;
-
     private String uName;
 
     private String uPsw;
@@ -21,9 +19,8 @@ public class User {
 
     private String uPicurl;
 
-    public User(String uAccountnumber, String iId, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uPicurl) {
+    public User(String uAccountnumber, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uPicurl) {
         this.uAccountnumber = uAccountnumber;
-        this.iId = iId;
         this.uName = uName;
         this.uPsw = uPsw;
         this.uSex = uSex;
@@ -44,14 +41,6 @@ public class User {
 
     public void setuAccountnumber(String uAccountnumber) {
         this.uAccountnumber = uAccountnumber == null ? null : uAccountnumber.trim();
-    }
-
-    public String getiId() {
-        return iId;
-    }
-
-    public void setiId(String iId) {
-        this.iId = iId == null ? null : iId.trim();
     }
 
     public String getuName() {

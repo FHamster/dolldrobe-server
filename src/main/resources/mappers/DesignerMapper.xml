@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.fhamster.dolldrobe.model.Designer" >
     <constructor >
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -19,7 +18,6 @@
   <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.Designer" >
     <constructor >
       <idArg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="I_Id" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Psw" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Sex" jdbcType="VARCHAR" javaType="java.lang.String" />
@@ -91,8 +89,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    U_AccountNumber, I_Id, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel, D_Attention, 
-    D_WorkNum
+    U_AccountNumber, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel, D_Attention, D_WorkNum
   </sql>
   <sql id="Blob_Column_List" >
     U_PicUrl
@@ -146,13 +143,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Designer" >
-    insert into designer (U_AccountNumber, I_Id, U_Name, 
-      U_Psw, U_Sex, U_Email, 
-      U_QQ, U_WX, U_Tel, D_Attention, 
+    insert into designer (U_AccountNumber, U_Name, U_Psw, 
+      U_Sex, U_Email, U_QQ, 
+      U_WX, U_Tel, D_Attention, 
       D_WorkNum, U_PicUrl)
-    values (#{uAccountnumber,jdbcType=VARCHAR}, #{iId,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, 
-      #{uPsw,jdbcType=VARCHAR}, #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, 
-      #{uQq,jdbcType=VARCHAR}, #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{dAttention,jdbcType=INTEGER}, 
+    values (#{uAccountnumber,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, #{uPsw,jdbcType=VARCHAR}, 
+      #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, #{uQq,jdbcType=VARCHAR}, 
+      #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{dAttention,jdbcType=INTEGER}, 
       #{dWorknum,jdbcType=INTEGER}, #{uPicurl,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Designer" >
@@ -160,9 +157,6 @@
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="uAccountnumber != null" >
         U_AccountNumber,
-      </if>
-      <if test="iId != null" >
-        I_Id,
       </if>
       <if test="uName != null" >
         U_Name,
@@ -198,9 +192,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="uAccountnumber != null" >
         #{uAccountnumber,jdbcType=VARCHAR},
-      </if>
-      <if test="iId != null" >
-        #{iId,jdbcType=VARCHAR},
       </if>
       <if test="uName != null" >
         #{uName,jdbcType=VARCHAR},
@@ -246,9 +237,6 @@
       <if test="record.uAccountnumber != null" >
         U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       </if>
-      <if test="record.iId != null" >
-        I_Id = #{record.iId,jdbcType=VARCHAR},
-      </if>
       <if test="record.uName != null" >
         U_Name = #{record.uName,jdbcType=VARCHAR},
       </if>
@@ -287,7 +275,6 @@
   <update id="updateByExampleWithBLOBs" parameterType="map" >
     update designer
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
-      I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
       U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
@@ -305,7 +292,6 @@
   <update id="updateByExample" parameterType="map" >
     update designer
     set U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
-      I_Id = #{record.iId,jdbcType=VARCHAR},
       U_Name = #{record.uName,jdbcType=VARCHAR},
       U_Psw = #{record.uPsw,jdbcType=VARCHAR},
       U_Sex = #{record.uSex,jdbcType=VARCHAR},
@@ -322,9 +308,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.fhamster.dolldrobe.model.Designer" >
     update designer
     <set >
-      <if test="iId != null" >
-        I_Id = #{iId,jdbcType=VARCHAR},
-      </if>
       <if test="uName != null" >
         U_Name = #{uName,jdbcType=VARCHAR},
       </if>
@@ -360,8 +343,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fhamster.dolldrobe.model.Designer" >
     update designer
-    set I_Id = #{iId,jdbcType=VARCHAR},
-      U_Name = #{uName,jdbcType=VARCHAR},
+    set U_Name = #{uName,jdbcType=VARCHAR},
       U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},
@@ -375,8 +357,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Designer" >
     update designer
-    set I_Id = #{iId,jdbcType=VARCHAR},
-      U_Name = #{uName,jdbcType=VARCHAR},
+    set U_Name = #{uName,jdbcType=VARCHAR},
       U_Psw = #{uPsw,jdbcType=VARCHAR},
       U_Sex = #{uSex,jdbcType=VARCHAR},
       U_Email = #{uEmail,jdbcType=VARCHAR},

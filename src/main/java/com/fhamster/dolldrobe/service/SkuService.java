@@ -25,6 +25,6 @@ public class SkuService {
         SKUExample example = new SKUExample();
         example.createCriteria()
                 .andCNumEqualTo(CNum);
-        return dao.selectByExample(example);
+        return dao.selectByExampleWithBLOBs(example);
     }
 }

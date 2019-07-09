@@ -16,15 +16,21 @@ public interface SKUMapper {
 
     int insertSelective(SKU record);
 
+    List<SKU> selectByExampleWithBLOBs(SKUExample example);
+
     List<SKU> selectByExample(SKUExample example);
 
     SKU selectByPrimaryKey(String skuId);
 
     int updateByExampleSelective(@Param("record") SKU record, @Param("example") SKUExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") SKU record, @Param("example") SKUExample example);
+
     int updateByExample(@Param("record") SKU record, @Param("example") SKUExample example);
 
     int updateByPrimaryKeySelective(SKU record);
+
+    int updateByPrimaryKeyWithBLOBs(SKU record);
 
     int updateByPrimaryKey(SKU record);
 }

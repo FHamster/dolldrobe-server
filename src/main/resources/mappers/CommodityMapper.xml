@@ -8,7 +8,16 @@
       <arg column="C_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_EndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="C_MaxMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="C_img" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.Commodity" >
+    <constructor >
+      <idArg column="C_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="C_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="C_EndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="C_MaxMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="C_Img" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -70,8 +79,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_Num, S_Num, C_Name, C_EndTime, C_MaxMoney, C_img
+    C_Num, S_Num, C_Name, C_EndTime, C_MaxMoney
   </sql>
+  <sql id="Blob_Column_List" >
+    C_Img
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.fhamster.dolldrobe.model.CommodityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from commodity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.CommodityExample" >
     select
     <if test="distinct" >
@@ -86,9 +114,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from commodity
     where C_Num = #{cNum,jdbcType=VARCHAR}
   </select>
@@ -104,10 +134,10 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Commodity" >
     insert into commodity (C_Num, S_Num, C_Name, 
-      C_EndTime, C_MaxMoney, C_img
+      C_EndTime, C_MaxMoney, C_Img
       )
     values (#{cNum,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
-      #{cEndtime,jdbcType=TIMESTAMP}, #{cMaxmoney,jdbcType=INTEGER}, #{cImg,jdbcType=VARCHAR}
+      #{cEndtime,jdbcType=TIMESTAMP}, #{cMaxmoney,jdbcType=INTEGER}, #{cImg,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Commodity" >
@@ -129,7 +159,7 @@
         C_MaxMoney,
       </if>
       <if test="cImg != null" >
-        C_img,
+        C_Img,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -149,7 +179,7 @@
         #{cMaxmoney,jdbcType=INTEGER},
       </if>
       <if test="cImg != null" >
-        #{cImg,jdbcType=VARCHAR},
+        #{cImg,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -178,9 +208,21 @@
         C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER},
       </if>
       <if test="record.cImg != null" >
-        C_img = #{record.cImg,jdbcType=VARCHAR},
+        C_Img = #{record.cImg,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update commodity
+    set C_Num = #{record.cNum,jdbcType=VARCHAR},
+      S_Num = #{record.sNum,jdbcType=VARCHAR},
+      C_Name = #{record.cName,jdbcType=VARCHAR},
+      C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
+      C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER},
+      C_Img = #{record.cImg,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,8 +233,7 @@
       S_Num = #{record.sNum,jdbcType=VARCHAR},
       C_Name = #{record.cName,jdbcType=VARCHAR},
       C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER},
-      C_img = #{record.cImg,jdbcType=VARCHAR}
+      C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,9 +254,18 @@
         C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER},
       </if>
       <if test="cImg != null" >
-        C_img = #{cImg,jdbcType=VARCHAR},
+        C_Img = #{cImg,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    where C_Num = #{cNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.fhamster.dolldrobe.model.Commodity" >
+    update commodity
+    set S_Num = #{sNum,jdbcType=VARCHAR},
+      C_Name = #{cName,jdbcType=VARCHAR},
+      C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
+      C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER},
+      C_Img = #{cImg,jdbcType=LONGVARCHAR}
     where C_Num = #{cNum,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fhamster.dolldrobe.model.Commodity" >
@@ -223,8 +273,7 @@
     set S_Num = #{sNum,jdbcType=VARCHAR},
       C_Name = #{cName,jdbcType=VARCHAR},
       C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER},
-      C_img = #{cImg,jdbcType=VARCHAR}
+      C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER}
     where C_Num = #{cNum,jdbcType=VARCHAR}
   </update>
 </mapper>
