@@ -38,20 +38,18 @@ public class RegionController {
     @GetMapping("/RegionName")
     @PassToken
     public String getRegionRoot(
-            @RequestParam String LeafRegId
+            @RequestParam(required = true) String RegionId
     ) {
 
         AdministrativeRegion region = new AdministrativeRegion();
-        region.setArNum(LeafRegId);
+        region.setArNum(RegionId);
 
-        StringBuilder builder = new StringBuilder();
-        List<AdministrativeRegion> strings = service.getRegionRootNameById(region);
+        String strings = service.getRegionRootNameById(RegionId);
 
-        strings.forEach(reg -> builder.append(reg.getArName()));
+//
+        System.out.println(strings);
 
-        System.out.println(toString());
-
-        return builder.toString();
+        return strings;
     }
 
 }

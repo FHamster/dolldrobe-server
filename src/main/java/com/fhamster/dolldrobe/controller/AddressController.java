@@ -1,5 +1,6 @@
 package com.fhamster.dolldrobe.controller;
 
+import com.fhamster.dolldrobe.model.AdministrativeRegion;
 import com.fhamster.dolldrobe.model.ShippingAddress;
 import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.service.AddressService;
@@ -18,6 +19,9 @@ public class AddressController {
     @Autowired
     AddressService service;
 
+    @Autowired
+    RegionService regService;
+
     @GetMapping("/Address")
     @UserLoginToken
     public List<ShippingAddress> getAddress(
@@ -25,8 +29,19 @@ public class AddressController {
     ) {
         User user = (User) request.getAttribute("user");
 
+        List<ShippingAddress> addressList = service.getAddress(user);
 
-        return service.getAddress(user);
+        ShippingAddress addressTmp;
+        for (int i = 0; i < addressList.size(); i++) {
+
+            addressTmp = addressList.get(i);
+            String str = regService.getRegionRootNameById(addressTmp.getArNum());
+            addressTmp.setArNum(str);
+        }
+
+
+        addressList.forEach(System.out::println);
+        return addressList;
     }
 
     @PostMapping("/Address")

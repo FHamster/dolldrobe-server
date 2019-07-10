@@ -106,4 +106,19 @@ public class ShippingAddress {
     public void setSaName(String saName) {
         this.saName = saName == null ? null : saName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "ShippingAddress{" +
+                "saNum='" + saNum + '\'' +
+                ", arNum='" + arNum + '\'' +
+                ", uAccountnumber='" + uAccountnumber + '\'' +
+                ", saDetail='" + saDetail + '\'' +
+                ", saDefault='" + saDefault + '\'' +
+                ", saEmail='" + saEmail + '\'' +
+                ", saTelphone='" + saTelphone + '\'' +
+                ", saPhone='" + saPhone + '\'' +
+                ", saName='" + saName + '\'' +
+                '}';
+    }
 }

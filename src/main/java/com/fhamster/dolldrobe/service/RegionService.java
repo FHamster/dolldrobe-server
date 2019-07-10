@@ -4,6 +4,7 @@ import com.fhamster.dolldrobe.dao.AdministrativeRegionMapper;
 import com.fhamster.dolldrobe.model.AdministrativeRegion;
 import com.fhamster.dolldrobe.model.AdministrativeRegionExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,21 +41,19 @@ public class RegionService {
     }
 
     /**
-     * 根据区域id获取区域信息
+     * 根据区域id获取完整的区域书树路径
      *
-     * @param region 传入上级区域
-     * @return 下属区域的列表
-     * <p>
-     * 传入福建省
-     * 传出厦门市，泉州市...
+     * @param regionId 传入上级区域
+     * @return 区域字符串 中国xx省xx市xx区
      */
-    public List<AdministrativeRegion> getRegionRootNameById(AdministrativeRegion region) {
+    @Cacheable("RegionCache")
+    public String getRegionRootNameById(String regionId) {
 
         Stack<AdministrativeRegion> regionLiStack = new Stack<>();
         AdministrativeRegion test;
         try {
 
-            test = dao.selectByPrimaryKey(region.getArNum());
+            test = dao.selectByPrimaryKey(regionId);
             if (test == null) {
                 throw new Exception("不存在的区域编号");
             }
@@ -68,7 +67,13 @@ public class RegionService {
         }
 
 
-        return new ArrayList<>(regionLiStack);
+        StringBuilder builder = new StringBuilder();
+        while (!regionLiStack.empty()) {
+            builder.append(regionLiStack.pop().getArName());
+        }
+        System.out.println(builder.toString());
+
+        return builder.toString();
     }
 
 }

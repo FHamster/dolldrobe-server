@@ -1,6 +1,8 @@
 package com.fhamster.dolldrobe.model;
 
-public class AdministrativeRegion {
+import java.io.Serializable;
+
+public class AdministrativeRegion implements Serializable {
     private String arNum;
 
     private String arPrentNum;
@@ -61,5 +63,16 @@ public class AdministrativeRegion {
 
     public void setArType(Integer arType) {
         this.arType = arType;
+    }
+
+    @Override
+    public String toString() {
+        return "AdministrativeRegion{" +
+                "arNum='" + arNum + '\'' +
+                ", arPrentNum='" + arPrentNum + '\'' +
+                ", arName='" + arName + '\'' +
+                ", arIsuse='" + arIsuse + '\'' +
+                ", arType=" + arType +
+                '}';
     }
 }

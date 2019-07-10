@@ -25,11 +25,7 @@ public class RegionServiceTest {
         AdministrativeRegion region = new AdministrativeRegion();
         region.setArNum("1263");
 
-        List<AdministrativeRegion> list = service.getRegionRootNameById(region);
-        List<String> stringList = list.stream()
-                .map(AdministrativeRegion::getArName)
-                .collect(Collectors.toList());
+        System.out.println(service.getRegionRootNameById(region.getArNum()));
 
-        stringList.forEach(System.out::println);
     }
 }

@@ -9,6 +9,7 @@ import com.fhamster.dolldrobe.util.PassToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -30,10 +31,12 @@ public class RegisterController {
 
     @PostMapping("/User")
     @PassToken
-    public void registerUser(@RequestBody User user) {
+    public void registerUser(@RequestBody User user, HttpServletRequest request) {
 
-        System.out.println(user);
 
+//        System.out.println(user);
+
+        service.addtUser(user);
 //        User user1 = JwtUtil.encodeLoginForm(user.getuPsw());
         //TODO 用户名不存在
 //        String acc = user.getuAccountnumber();
