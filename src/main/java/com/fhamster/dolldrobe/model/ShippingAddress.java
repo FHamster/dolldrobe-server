@@ -11,12 +11,24 @@ public class ShippingAddress {
 
     private String saDefault;
 
-    public ShippingAddress(String saNum, String arNum, String uAccountnumber, String saDetail, String saDefault) {
+    private String saEmail;
+
+    private String saTelphone;
+
+    private String saPhone;
+
+    private String saName;
+
+    public ShippingAddress(String saNum, String arNum, String uAccountnumber, String saDetail, String saDefault, String saEmail, String saTelphone, String saPhone, String saName) {
         this.saNum = saNum;
         this.arNum = arNum;
         this.uAccountnumber = uAccountnumber;
         this.saDetail = saDetail;
         this.saDefault = saDefault;
+        this.saEmail = saEmail;
+        this.saTelphone = saTelphone;
+        this.saPhone = saPhone;
+        this.saName = saName;
     }
 
     public ShippingAddress() {
@@ -61,5 +73,37 @@ public class ShippingAddress {
 
     public void setSaDefault(String saDefault) {
         this.saDefault = saDefault == null ? null : saDefault.trim();
+    }
+
+    public String getSaEmail() {
+        return saEmail;
+    }
+
+    public void setSaEmail(String saEmail) {
+        this.saEmail = saEmail == null ? null : saEmail.trim();
+    }
+
+    public String getSaTelphone() {
+        return saTelphone;
+    }
+
+    public void setSaTelphone(String saTelphone) {
+        this.saTelphone = saTelphone == null ? null : saTelphone.trim();
+    }
+
+    public String getSaPhone() {
+        return saPhone;
+    }
+
+    public void setSaPhone(String saPhone) {
+        this.saPhone = saPhone == null ? null : saPhone.trim();
+    }
+
+    public String getSaName() {
+        return saName;
+    }
+
+    public void setSaName(String saName) {
+        this.saName = saName == null ? null : saName.trim();
     }
 }

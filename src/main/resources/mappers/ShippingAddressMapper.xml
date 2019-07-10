@@ -8,6 +8,10 @@
       <arg column="U_AccountNumber" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="SA_Detail" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="SA_Default" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SA_Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SA_telPhone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SA_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SA_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -69,7 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    SA_Num, AR_Num, U_AccountNumber, SA_Detail, SA_Default
+    SA_Num, AR_Num, U_AccountNumber, SA_Detail, SA_Default, SA_Email, SA_telPhone, SA_phone, 
+    SA_Name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fhamster.dolldrobe.model.ShippingAddressExample" >
     select
@@ -103,9 +108,13 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.ShippingAddress" >
     insert into shippingaddress (SA_Num, AR_Num, U_AccountNumber, 
-      SA_Detail, SA_Default)
+      SA_Detail, SA_Default, SA_Email, 
+      SA_telPhone, SA_phone, SA_Name
+      )
     values (#{saNum,jdbcType=VARCHAR}, #{arNum,jdbcType=VARCHAR}, #{uAccountnumber,jdbcType=VARCHAR}, 
-      #{saDetail,jdbcType=VARCHAR}, #{saDefault,jdbcType=VARCHAR})
+      #{saDetail,jdbcType=VARCHAR}, #{saDefault,jdbcType=VARCHAR}, #{saEmail,jdbcType=VARCHAR}, 
+      #{saTelphone,jdbcType=VARCHAR}, #{saPhone,jdbcType=VARCHAR}, #{saName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.ShippingAddress" >
     insert into shippingaddress
@@ -125,6 +134,18 @@
       <if test="saDefault != null" >
         SA_Default,
       </if>
+      <if test="saEmail != null" >
+        SA_Email,
+      </if>
+      <if test="saTelphone != null" >
+        SA_telPhone,
+      </if>
+      <if test="saPhone != null" >
+        SA_phone,
+      </if>
+      <if test="saName != null" >
+        SA_Name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="saNum != null" >
@@ -141,6 +162,18 @@
       </if>
       <if test="saDefault != null" >
         #{saDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="saEmail != null" >
+        #{saEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="saTelphone != null" >
+        #{saTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="saPhone != null" >
+        #{saPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="saName != null" >
+        #{saName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -168,6 +201,18 @@
       <if test="record.saDefault != null" >
         SA_Default = #{record.saDefault,jdbcType=VARCHAR},
       </if>
+      <if test="record.saEmail != null" >
+        SA_Email = #{record.saEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saTelphone != null" >
+        SA_telPhone = #{record.saTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saPhone != null" >
+        SA_phone = #{record.saPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.saName != null" >
+        SA_Name = #{record.saName,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -179,7 +224,11 @@
       AR_Num = #{record.arNum,jdbcType=VARCHAR},
       U_AccountNumber = #{record.uAccountnumber,jdbcType=VARCHAR},
       SA_Detail = #{record.saDetail,jdbcType=VARCHAR},
-      SA_Default = #{record.saDefault,jdbcType=VARCHAR}
+      SA_Default = #{record.saDefault,jdbcType=VARCHAR},
+      SA_Email = #{record.saEmail,jdbcType=VARCHAR},
+      SA_telPhone = #{record.saTelphone,jdbcType=VARCHAR},
+      SA_phone = #{record.saPhone,jdbcType=VARCHAR},
+      SA_Name = #{record.saName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -199,6 +248,18 @@
       <if test="saDefault != null" >
         SA_Default = #{saDefault,jdbcType=VARCHAR},
       </if>
+      <if test="saEmail != null" >
+        SA_Email = #{saEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="saTelphone != null" >
+        SA_telPhone = #{saTelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="saPhone != null" >
+        SA_phone = #{saPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="saName != null" >
+        SA_Name = #{saName,jdbcType=VARCHAR},
+      </if>
     </set>
     where SA_Num = #{saNum,jdbcType=VARCHAR}
   </update>
@@ -207,7 +268,11 @@
     set AR_Num = #{arNum,jdbcType=VARCHAR},
       U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR},
       SA_Detail = #{saDetail,jdbcType=VARCHAR},
-      SA_Default = #{saDefault,jdbcType=VARCHAR}
+      SA_Default = #{saDefault,jdbcType=VARCHAR},
+      SA_Email = #{saEmail,jdbcType=VARCHAR},
+      SA_telPhone = #{saTelphone,jdbcType=VARCHAR},
+      SA_phone = #{saPhone,jdbcType=VARCHAR},
+      SA_Name = #{saName,jdbcType=VARCHAR}
     where SA_Num = #{saNum,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -453,6 +453,286 @@ public class ShippingAddressExample {
             addCriterion("SA_Default not between", value1, value2, "saDefault");
             return (Criteria) this;
         }
+
+        public Criteria andSaEmailIsNull() {
+            addCriterion("SA_Email is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailIsNotNull() {
+            addCriterion("SA_Email is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailEqualTo(String value) {
+            addCriterion("SA_Email =", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailNotEqualTo(String value) {
+            addCriterion("SA_Email <>", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailGreaterThan(String value) {
+            addCriterion("SA_Email >", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("SA_Email >=", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailLessThan(String value) {
+            addCriterion("SA_Email <", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailLessThanOrEqualTo(String value) {
+            addCriterion("SA_Email <=", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailLike(String value) {
+            addCriterion("SA_Email like", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailNotLike(String value) {
+            addCriterion("SA_Email not like", value, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailIn(List<String> values) {
+            addCriterion("SA_Email in", values, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailNotIn(List<String> values) {
+            addCriterion("SA_Email not in", values, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailBetween(String value1, String value2) {
+            addCriterion("SA_Email between", value1, value2, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaEmailNotBetween(String value1, String value2) {
+            addCriterion("SA_Email not between", value1, value2, "saEmail");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneIsNull() {
+            addCriterion("SA_telPhone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneIsNotNull() {
+            addCriterion("SA_telPhone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneEqualTo(String value) {
+            addCriterion("SA_telPhone =", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneNotEqualTo(String value) {
+            addCriterion("SA_telPhone <>", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneGreaterThan(String value) {
+            addCriterion("SA_telPhone >", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneGreaterThanOrEqualTo(String value) {
+            addCriterion("SA_telPhone >=", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneLessThan(String value) {
+            addCriterion("SA_telPhone <", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneLessThanOrEqualTo(String value) {
+            addCriterion("SA_telPhone <=", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneLike(String value) {
+            addCriterion("SA_telPhone like", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneNotLike(String value) {
+            addCriterion("SA_telPhone not like", value, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneIn(List<String> values) {
+            addCriterion("SA_telPhone in", values, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneNotIn(List<String> values) {
+            addCriterion("SA_telPhone not in", values, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneBetween(String value1, String value2) {
+            addCriterion("SA_telPhone between", value1, value2, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaTelphoneNotBetween(String value1, String value2) {
+            addCriterion("SA_telPhone not between", value1, value2, "saTelphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneIsNull() {
+            addCriterion("SA_phone is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneIsNotNull() {
+            addCriterion("SA_phone is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneEqualTo(String value) {
+            addCriterion("SA_phone =", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneNotEqualTo(String value) {
+            addCriterion("SA_phone <>", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneGreaterThan(String value) {
+            addCriterion("SA_phone >", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneGreaterThanOrEqualTo(String value) {
+            addCriterion("SA_phone >=", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneLessThan(String value) {
+            addCriterion("SA_phone <", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneLessThanOrEqualTo(String value) {
+            addCriterion("SA_phone <=", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneLike(String value) {
+            addCriterion("SA_phone like", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneNotLike(String value) {
+            addCriterion("SA_phone not like", value, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneIn(List<String> values) {
+            addCriterion("SA_phone in", values, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneNotIn(List<String> values) {
+            addCriterion("SA_phone not in", values, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneBetween(String value1, String value2) {
+            addCriterion("SA_phone between", value1, value2, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaPhoneNotBetween(String value1, String value2) {
+            addCriterion("SA_phone not between", value1, value2, "saPhone");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameIsNull() {
+            addCriterion("SA_Name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameIsNotNull() {
+            addCriterion("SA_Name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameEqualTo(String value) {
+            addCriterion("SA_Name =", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameNotEqualTo(String value) {
+            addCriterion("SA_Name <>", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameGreaterThan(String value) {
+            addCriterion("SA_Name >", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameGreaterThanOrEqualTo(String value) {
+            addCriterion("SA_Name >=", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameLessThan(String value) {
+            addCriterion("SA_Name <", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameLessThanOrEqualTo(String value) {
+            addCriterion("SA_Name <=", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameLike(String value) {
+            addCriterion("SA_Name like", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameNotLike(String value) {
+            addCriterion("SA_Name not like", value, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameIn(List<String> values) {
+            addCriterion("SA_Name in", values, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameNotIn(List<String> values) {
+            addCriterion("SA_Name not in", values, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameBetween(String value1, String value2) {
+            addCriterion("SA_Name between", value1, value2, "saName");
+            return (Criteria) this;
+        }
+
+        public Criteria andSaNameNotBetween(String value1, String value2) {
+            addCriterion("SA_Name not between", value1, value2, "saName");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

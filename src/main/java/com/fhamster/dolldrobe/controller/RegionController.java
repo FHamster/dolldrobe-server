@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/Region")
@@ -23,7 +24,7 @@ public class RegionController {
 
     @GetMapping("/RegionByParent")
     @PassToken
-    public List<AdministrativeRegion> getFavorities(
+    public List<AdministrativeRegion> getRegionByParent(
             @RequestParam(required = true, defaultValue = "1") String ParentId
     ) {
 
@@ -32,6 +33,25 @@ public class RegionController {
         region.setArNum(ParentId);
 
         return service.getRegionByPrentId(region);
+    }
+
+    @GetMapping("/RegionName")
+    @PassToken
+    public String getRegionRoot(
+            @RequestParam String LeafRegId
+    ) {
+
+        AdministrativeRegion region = new AdministrativeRegion();
+        region.setArNum(LeafRegId);
+
+        StringBuilder builder = new StringBuilder();
+        List<AdministrativeRegion> strings = service.getRegionRootNameById(region);
+
+        strings.forEach(reg -> builder.append(reg.getArName()));
+
+        System.out.println(toString());
+
+        return builder.toString();
     }
 
 }
