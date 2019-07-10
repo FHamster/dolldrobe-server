@@ -47,6 +47,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     request.setAttribute("user", user);
                 } catch (Exception e) {
                     response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
+                    //认证不通过拒绝访问
+                    return false;
                 }
                 return true;
             }

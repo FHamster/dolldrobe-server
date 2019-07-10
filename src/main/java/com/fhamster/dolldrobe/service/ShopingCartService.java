@@ -74,17 +74,33 @@ public class ShopingCartService {
 
 
     /**
-     * 将指定库存商品加入某用户的购物车
+     * 将指定库存商品加入某用户的购物
      *
      * @param shoppingCart 要加入的购物车记录
      */
-    public void insertSC(ShoppingCart shoppingCart) {
+    public void addSC(ShoppingCart shoppingCart) {
+
+        //检查库存内有没有该商品
+        //检查用户购物车内有没有该商品
+
         try {
+            //检查库存内有没有该商品
             SKU sku = skudao.selectByPrimaryKey(shoppingCart.getSkuId());
             if (sku == null) {
                 throw new Exception("无此库存商品id");
             }
-            scdao.insert(shoppingCart);
+
+            //检查用户购物车内有没有该商品
+            ShoppingCartKey key = shoppingCart;
+            ShoppingCart test = scdao.selectByPrimaryKey(key);
+            if (test == null) {
+                //没有的话就插入购物车记录
+                scdao.insertSelective(shoppingCart);
+            } else {
+                //有的话就数量相加
+                shoppingCart.setScNum(shoppingCart.getScNum() + test.getScNum());
+                scdao.updateByPrimaryKeySelective(shoppingCart);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -101,8 +117,9 @@ public class ShopingCartService {
      * @param sku_id  商品库存id
      * @param userAcc 用户账号
      * @param num     商品数量
+     * @deprecated 少用吧，传入数据不标准
      */
-    public void insertSC(String sku_id, String userAcc, int num) {
+    public void addSC(String sku_id, String userAcc, int num) {
         try {
             SKU sku = skudao.selectByPrimaryKey(sku_id);
             if (sku == null) {
@@ -126,7 +143,16 @@ public class ShopingCartService {
      * @param cart 需要删除的购物车信息
      */
     public void deletSC(ShoppingCart cart) {
-//        查询到购物车内商品信息
+        try {
+            //查询到购物车内商品信息
+            if (scdao.selectByPrimaryKey(cart) == null) {
+                throw new Exception("该用户购物车中没有这个商品");
+            }
+
+            scdao.deleteByPrimaryKey(cart);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         ShoppingCartKey key = new ShoppingCartKey(cart.getSkuId(), cart.getuAccountnumber());
         scdao.deleteByPrimaryKey(key);
     }
@@ -136,19 +162,16 @@ public class ShopingCartService {
      * question:修改数量 or 修改类别
      * 解决：先删除原数据，再插入新数据
      *
-     * @param cart1 旧cart
-     * @param cart2 新cart
+     * @param cart 修改后的cart
      */
-    public void modifySC(ShoppingCart cart1, ShoppingCart cart2) {
-        ShoppingCartKey key = new ShoppingCartKey(cart1.getSkuId(), cart1.getuAccountnumber());
+    public void modifySCSelective(ShoppingCart cart) {
+
         try {
-            if (cart1 == null) {
-                throw new Exception("不存在该购物车");
+            if (scdao.selectByPrimaryKey(cart) == null) {
+                throw new Exception("用户购物车不存在该商品");
             }
-//           删除原购物车商品信息
-            scdao.deleteByPrimaryKey(key);
-            //插入新商品信息
-            scdao.insert(cart2);
+            //修改原购物车商品信息
+            scdao.updateByPrimaryKeySelective(cart);
         } catch (Exception e) {
             e.printStackTrace();
         }

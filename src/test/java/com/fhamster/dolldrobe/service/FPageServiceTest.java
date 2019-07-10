@@ -1,5 +1,6 @@
 package com.fhamster.dolldrobe.service;
 
+import com.fhamster.dolldrobe.model.FPageCommodity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class FPageServiceTest {
      */
     @Test
     public void insertFPage() {
-        service.InsertFPage("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH");
+        service.InsertFPage(new FPageCommodity("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH", null));
     }
 
     @Test

@@ -22,12 +22,39 @@ public class CartController {
 
     @PostMapping("/Cart")
     @UserLoginToken
-    public void addIntoCart(
+    public boolean addIntoCart(
             @RequestBody ShoppingCart cart
     ) {
         User user = (User) request.getAttribute("user");
         cart.setuAccountnumber(user.getuAccountnumber());
-        service.insertSC(cart);
+        service.addSC(cart);
+        return true;
+    }
+
+    @PatchMapping("/Cart")
+    @UserLoginToken
+    public boolean patchIntoCart(
+            @RequestBody ShoppingCart cart
+    ) {
+        User user = (User) request.getAttribute("user");
+        cart.setuAccountnumber(user.getuAccountnumber());
+
+        service.modifySCSelective(cart);
+        return true;
+    }
+
+    //TODO 这个接口的设计有问题以后要改
+    @PostMapping("/delCart")
+    @UserLoginToken
+    public boolean deleteCart(
+            @RequestBody ShoppingCart cart
+    ) {
+        User user = (User) request.getAttribute("user");
+        cart.setuAccountnumber(user.getuAccountnumber());
+
+//        System.out.println(cart);
+        service.deletSC(cart);
+        return true;
     }
 
     @GetMapping("/Cart")

@@ -1,6 +1,7 @@
 package com.fhamster.dolldrobe.controller;
 
 import com.fhamster.dolldrobe.model.Commodity;
+import com.fhamster.dolldrobe.model.FPageCommodity;
 import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.service.FPageService;
 import com.fhamster.dolldrobe.util.UserLoginToken;
@@ -35,14 +36,16 @@ public class FavoritiesController {
     @UserLoginToken
     public void addFavorities(
             HttpServletRequest request,
-           @RequestBody Commodity commodity
+            @RequestBody Commodity commodity
     ) {
 
         User user = (User) request.getAttribute("user");
 
-
-        service.InsertFPage(user.getuAccountnumber(), commodity.getcNum());
-
-
+        FPageCommodity fPageCommodity = new FPageCommodity(
+                commodity.getcNum(),
+                user.getuAccountnumber(),
+                null
+        );
+        service.InsertFPage(fPageCommodity);
     }
 }

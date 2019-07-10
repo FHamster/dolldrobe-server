@@ -40,26 +40,38 @@ public class FPageService {
         CommodityExample example1 = new CommodityExample();
         example1.createCriteria().andCNumIn(strings);
 
-        return comdao.selectByExample(example1);
+        return comdao.selectByExampleWithBLOBs(example1);
     }
 
 
     /**
-     * date获取当前时间
      * 插入商品
      *
-     * @param UAcc 用户账号
-     * @param CNum 商品id
+     * @param fPageCommodity 要插入收藏记录
      */
-    public void InsertFPage(String UAcc, String CNum) {
+    public void InsertFPage(FPageCommodity fPageCommodity) {
         //获取当前日期
         Date date = new Date();
-        //设置要获取到什么样的时间
-        // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //获取String类型的时间
-//        String d = sdf.format(date);
-        FPageCommodity commodity = new FPageCommodity(CNum, UAcc, date);
-        dao.insert(commodity);
+        fPageCommodity.setFgDate(date);
+
+        System.out.println(fPageCommodity.getcNum());
+
+        Commodity comTest = comdao.selectByPrimaryKey(fPageCommodity.getcNum());
+
+//        CommodityExample comExample = new CommodityExample();
+//        List<Commodity> comTest = comdao.selectByExampleWithBLOBs(comExample);
+        FPageCommodity test = dao.selectByPrimaryKey(fPageCommodity);
+        try {
+            if (comTest == null) {
+                throw new Exception("该商品不存在");
+            }
+            if (test != null) {
+                throw new Exception("这件商品已经被收藏了");
+            }
+            dao.insertSelective(fPageCommodity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
