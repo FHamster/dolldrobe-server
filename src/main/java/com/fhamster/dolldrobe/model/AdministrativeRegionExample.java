@@ -174,6 +174,76 @@ public class AdministrativeRegionExample {
             return (Criteria) this;
         }
 
+        public Criteria andArPrentNumIsNull() {
+            addCriterion("AR_Prent_Num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumIsNotNull() {
+            addCriterion("AR_Prent_Num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumEqualTo(String value) {
+            addCriterion("AR_Prent_Num =", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumNotEqualTo(String value) {
+            addCriterion("AR_Prent_Num <>", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumGreaterThan(String value) {
+            addCriterion("AR_Prent_Num >", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumGreaterThanOrEqualTo(String value) {
+            addCriterion("AR_Prent_Num >=", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumLessThan(String value) {
+            addCriterion("AR_Prent_Num <", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumLessThanOrEqualTo(String value) {
+            addCriterion("AR_Prent_Num <=", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumLike(String value) {
+            addCriterion("AR_Prent_Num like", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumNotLike(String value) {
+            addCriterion("AR_Prent_Num not like", value, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumIn(List<String> values) {
+            addCriterion("AR_Prent_Num in", values, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumNotIn(List<String> values) {
+            addCriterion("AR_Prent_Num not in", values, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumBetween(String value1, String value2) {
+            addCriterion("AR_Prent_Num between", value1, value2, "arPrentNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andArPrentNumNotBetween(String value1, String value2) {
+            addCriterion("AR_Prent_Num not between", value1, value2, "arPrentNum");
+            return (Criteria) this;
+        }
+
         public Criteria andArNameIsNull() {
             addCriterion("AR_Name is null");
             return (Criteria) this;
@@ -311,6 +381,66 @@ public class AdministrativeRegionExample {
 
         public Criteria andArIsuseNotBetween(String value1, String value2) {
             addCriterion("AR_isUse not between", value1, value2, "arIsuse");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeIsNull() {
+            addCriterion("AR_Type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeIsNotNull() {
+            addCriterion("AR_Type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeEqualTo(Integer value) {
+            addCriterion("AR_Type =", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeNotEqualTo(Integer value) {
+            addCriterion("AR_Type <>", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeGreaterThan(Integer value) {
+            addCriterion("AR_Type >", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("AR_Type >=", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeLessThan(Integer value) {
+            addCriterion("AR_Type <", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("AR_Type <=", value, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeIn(List<Integer> values) {
+            addCriterion("AR_Type in", values, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeNotIn(List<Integer> values) {
+            addCriterion("AR_Type not in", values, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeBetween(Integer value1, Integer value2) {
+            addCriterion("AR_Type between", value1, value2, "arType");
+            return (Criteria) this;
+        }
+
+        public Criteria andArTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("AR_Type not between", value1, value2, "arType");
             return (Criteria) this;
         }
     }

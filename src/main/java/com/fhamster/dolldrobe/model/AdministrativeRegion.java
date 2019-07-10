@@ -3,14 +3,20 @@ package com.fhamster.dolldrobe.model;
 public class AdministrativeRegion {
     private String arNum;
 
+    private String arPrentNum;
+
     private String arName;
 
     private String arIsuse;
 
-    public AdministrativeRegion(String arNum, String arName, String arIsuse) {
+    private Integer arType;
+
+    public AdministrativeRegion(String arNum, String arPrentNum, String arName, String arIsuse, Integer arType) {
         this.arNum = arNum;
+        this.arPrentNum = arPrentNum;
         this.arName = arName;
         this.arIsuse = arIsuse;
+        this.arType = arType;
     }
 
     public AdministrativeRegion() {
@@ -23,6 +29,14 @@ public class AdministrativeRegion {
 
     public void setArNum(String arNum) {
         this.arNum = arNum == null ? null : arNum.trim();
+    }
+
+    public String getArPrentNum() {
+        return arPrentNum;
+    }
+
+    public void setArPrentNum(String arPrentNum) {
+        this.arPrentNum = arPrentNum == null ? null : arPrentNum.trim();
     }
 
     public String getArName() {
@@ -39,5 +53,13 @@ public class AdministrativeRegion {
 
     public void setArIsuse(String arIsuse) {
         this.arIsuse = arIsuse == null ? null : arIsuse.trim();
+    }
+
+    public Integer getArType() {
+        return arType;
+    }
+
+    public void setArType(Integer arType) {
+        this.arType = arType;
     }
 }
