@@ -375,63 +375,63 @@ public class CommodityExample {
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyIsNull() {
-            addCriterion("C_MaxMoney is null");
+        public Criteria andCMinmoneyIsNull() {
+            addCriterion("C_MinMoney is null");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyIsNotNull() {
-            addCriterion("C_MaxMoney is not null");
+        public Criteria andCMinmoneyIsNotNull() {
+            addCriterion("C_MinMoney is not null");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyEqualTo(Integer value) {
-            addCriterion("C_MaxMoney =", value, "cMaxmoney");
+        public Criteria andCMinmoneyEqualTo(Integer value) {
+            addCriterion("C_MinMoney =", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyNotEqualTo(Integer value) {
-            addCriterion("C_MaxMoney <>", value, "cMaxmoney");
+        public Criteria andCMinmoneyNotEqualTo(Integer value) {
+            addCriterion("C_MinMoney <>", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyGreaterThan(Integer value) {
-            addCriterion("C_MaxMoney >", value, "cMaxmoney");
+        public Criteria andCMinmoneyGreaterThan(Integer value) {
+            addCriterion("C_MinMoney >", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyGreaterThanOrEqualTo(Integer value) {
-            addCriterion("C_MaxMoney >=", value, "cMaxmoney");
+        public Criteria andCMinmoneyGreaterThanOrEqualTo(Integer value) {
+            addCriterion("C_MinMoney >=", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyLessThan(Integer value) {
-            addCriterion("C_MaxMoney <", value, "cMaxmoney");
+        public Criteria andCMinmoneyLessThan(Integer value) {
+            addCriterion("C_MinMoney <", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyLessThanOrEqualTo(Integer value) {
-            addCriterion("C_MaxMoney <=", value, "cMaxmoney");
+        public Criteria andCMinmoneyLessThanOrEqualTo(Integer value) {
+            addCriterion("C_MinMoney <=", value, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyIn(List<Integer> values) {
-            addCriterion("C_MaxMoney in", values, "cMaxmoney");
+        public Criteria andCMinmoneyIn(List<Integer> values) {
+            addCriterion("C_MinMoney in", values, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyNotIn(List<Integer> values) {
-            addCriterion("C_MaxMoney not in", values, "cMaxmoney");
+        public Criteria andCMinmoneyNotIn(List<Integer> values) {
+            addCriterion("C_MinMoney not in", values, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyBetween(Integer value1, Integer value2) {
-            addCriterion("C_MaxMoney between", value1, value2, "cMaxmoney");
+        public Criteria andCMinmoneyBetween(Integer value1, Integer value2) {
+            addCriterion("C_MinMoney between", value1, value2, "cMinmoney");
             return (Criteria) this;
         }
 
-        public Criteria andCMaxmoneyNotBetween(Integer value1, Integer value2) {
-            addCriterion("C_MaxMoney not between", value1, value2, "cMaxmoney");
+        public Criteria andCMinmoneyNotBetween(Integer value1, Integer value2) {
+            addCriterion("C_MinMoney not between", value1, value2, "cMinmoney");
             return (Criteria) this;
         }
     }

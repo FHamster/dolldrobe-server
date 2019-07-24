@@ -663,6 +663,146 @@ public class UserExample {
             addCriterion("U_Tel not between", value1, value2, "uTel");
             return (Criteria) this;
         }
+
+        public Criteria andURealnameIsNull() {
+            addCriterion("U_RealName is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameIsNotNull() {
+            addCriterion("U_RealName is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameEqualTo(String value) {
+            addCriterion("U_RealName =", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameNotEqualTo(String value) {
+            addCriterion("U_RealName <>", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameGreaterThan(String value) {
+            addCriterion("U_RealName >", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameGreaterThanOrEqualTo(String value) {
+            addCriterion("U_RealName >=", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameLessThan(String value) {
+            addCriterion("U_RealName <", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameLessThanOrEqualTo(String value) {
+            addCriterion("U_RealName <=", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameLike(String value) {
+            addCriterion("U_RealName like", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameNotLike(String value) {
+            addCriterion("U_RealName not like", value, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameIn(List<String> values) {
+            addCriterion("U_RealName in", values, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameNotIn(List<String> values) {
+            addCriterion("U_RealName not in", values, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameBetween(String value1, String value2) {
+            addCriterion("U_RealName between", value1, value2, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealnameNotBetween(String value1, String value2) {
+            addCriterion("U_RealName not between", value1, value2, "uRealname");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidIsNull() {
+            addCriterion("U_RealID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidIsNotNull() {
+            addCriterion("U_RealID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidEqualTo(String value) {
+            addCriterion("U_RealID =", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidNotEqualTo(String value) {
+            addCriterion("U_RealID <>", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidGreaterThan(String value) {
+            addCriterion("U_RealID >", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidGreaterThanOrEqualTo(String value) {
+            addCriterion("U_RealID >=", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidLessThan(String value) {
+            addCriterion("U_RealID <", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidLessThanOrEqualTo(String value) {
+            addCriterion("U_RealID <=", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidLike(String value) {
+            addCriterion("U_RealID like", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidNotLike(String value) {
+            addCriterion("U_RealID not like", value, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidIn(List<String> values) {
+            addCriterion("U_RealID in", values, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidNotIn(List<String> values) {
+            addCriterion("U_RealID not in", values, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidBetween(String value1, String value2) {
+            addCriterion("U_RealID between", value1, value2, "uRealid");
+            return (Criteria) this;
+        }
+
+        public Criteria andURealidNotBetween(String value1, String value2) {
+            addCriterion("U_RealID not between", value1, value2, "uRealid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

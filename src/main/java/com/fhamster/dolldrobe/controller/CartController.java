@@ -2,6 +2,7 @@ package com.fhamster.dolldrobe.controller;
 
 import com.fhamster.dolldrobe.model.Relation.CartSKu;
 import com.fhamster.dolldrobe.model.ShoppingCart;
+import com.fhamster.dolldrobe.model.ShoppingCartKey;
 import com.fhamster.dolldrobe.model.User;
 import com.fhamster.dolldrobe.service.ShopingCartService;
 import com.fhamster.dolldrobe.util.UserLoginToken;
@@ -20,7 +21,7 @@ public class CartController {
     @Autowired
     HttpServletRequest request;
 
-    @PostMapping("/Cart")
+    @PostMapping
     @UserLoginToken
     public boolean addIntoCart(
             @RequestBody ShoppingCart cart
@@ -44,12 +45,12 @@ public class CartController {
     }
 
     //TODO 这个接口的设计有问题以后要改
-    @PostMapping("/delCart")
+    @DeleteMapping("/{SkuId}")
     @UserLoginToken
-    public boolean deleteCart(
-            @RequestBody ShoppingCart cart
-    ) {
+    public boolean deleteCart(@PathVariable String SkuId) {
         User user = (User) request.getAttribute("user");
+        ShoppingCartKey cart = new ShoppingCart();
+        cart.setSkuId(SkuId);
         cart.setuAccountnumber(user.getuAccountnumber());
 
 //        System.out.println(cart);
@@ -59,7 +60,7 @@ public class CartController {
 
     @GetMapping("/Cart")
     @UserLoginToken
-    public List<CartSKu> getCart(HttpServletRequest request) {
+    public List<CartSKu> getCart() {
         User user = (User) request.getAttribute("user");
 
         List<CartSKu> list = service.getCartSKu(user.getuAccountnumber());

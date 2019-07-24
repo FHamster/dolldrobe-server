@@ -24,7 +24,11 @@ public class FPageServiceTest {
      */
     @Test
     public void insertFPage() {
-        service.InsertFPage(new FPageCommodity("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH", null));
+        try {
+            service.InsertFPage(new FPageCommodity("root", "462WPE4F5VG59946GAXN3M2IYC8F4GXH", null));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test

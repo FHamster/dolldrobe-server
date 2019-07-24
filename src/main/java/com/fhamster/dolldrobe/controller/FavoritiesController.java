@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -36,16 +37,22 @@ public class FavoritiesController {
     @UserLoginToken
     public void addFavorities(
             HttpServletRequest request,
+            HttpServletResponse response,
             @RequestBody Commodity commodity
-    ) {
+    ) throws Exception {
 
         User user = (User) request.getAttribute("user");
 
-        FPageCommodity fPageCommodity = new FPageCommodity(
-                commodity.getcNum(),
-                user.getuAccountnumber(),
-                null
-        );
-        service.InsertFPage(fPageCommodity);
+        FPageCommodity fPageCommodity = new FPageCommodity();
+        fPageCommodity.setcNum(commodity.getcNum());
+        fPageCommodity.setuAccountnumber(user.getuAccountnumber());
+
+        try {
+
+            service.InsertFPage(fPageCommodity);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            response.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED, e.getMessage());
+        }
     }
 }

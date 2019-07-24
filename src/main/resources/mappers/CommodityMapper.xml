@@ -7,7 +7,7 @@
       <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_EndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="C_MaxMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="C_MinMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.Commodity" >
@@ -16,7 +16,7 @@
       <arg column="S_Num" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_Name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="C_EndTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="C_MaxMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="C_MinMoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="C_Img" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
@@ -79,7 +79,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_Num, S_Num, C_Name, C_EndTime, C_MaxMoney
+    C_Num, S_Num, C_Name, C_EndTime, C_MinMoney
   </sql>
   <sql id="Blob_Column_List" >
     C_Img
@@ -134,10 +134,10 @@
   </delete>
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.Commodity" >
     insert into commodity (C_Num, S_Num, C_Name, 
-      C_EndTime, C_MaxMoney, C_Img
+      C_EndTime, C_MinMoney, C_Img
       )
     values (#{cNum,jdbcType=VARCHAR}, #{sNum,jdbcType=VARCHAR}, #{cName,jdbcType=VARCHAR}, 
-      #{cEndtime,jdbcType=TIMESTAMP}, #{cMaxmoney,jdbcType=INTEGER}, #{cImg,jdbcType=LONGVARCHAR}
+      #{cEndtime,jdbcType=TIMESTAMP}, #{cMinmoney,jdbcType=INTEGER}, #{cImg,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.Commodity" >
@@ -155,8 +155,8 @@
       <if test="cEndtime != null" >
         C_EndTime,
       </if>
-      <if test="cMaxmoney != null" >
-        C_MaxMoney,
+      <if test="cMinmoney != null" >
+        C_MinMoney,
       </if>
       <if test="cImg != null" >
         C_Img,
@@ -175,8 +175,8 @@
       <if test="cEndtime != null" >
         #{cEndtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="cMaxmoney != null" >
-        #{cMaxmoney,jdbcType=INTEGER},
+      <if test="cMinmoney != null" >
+        #{cMinmoney,jdbcType=INTEGER},
       </if>
       <if test="cImg != null" >
         #{cImg,jdbcType=LONGVARCHAR},
@@ -204,8 +204,8 @@
       <if test="record.cEndtime != null" >
         C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.cMaxmoney != null" >
-        C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER},
+      <if test="record.cMinmoney != null" >
+        C_MinMoney = #{record.cMinmoney,jdbcType=INTEGER},
       </if>
       <if test="record.cImg != null" >
         C_Img = #{record.cImg,jdbcType=LONGVARCHAR},
@@ -221,7 +221,7 @@
       S_Num = #{record.sNum,jdbcType=VARCHAR},
       C_Name = #{record.cName,jdbcType=VARCHAR},
       C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER},
+      C_MinMoney = #{record.cMinmoney,jdbcType=INTEGER},
       C_Img = #{record.cImg,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -233,7 +233,7 @@
       S_Num = #{record.sNum,jdbcType=VARCHAR},
       C_Name = #{record.cName,jdbcType=VARCHAR},
       C_EndTime = #{record.cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{record.cMaxmoney,jdbcType=INTEGER}
+      C_MinMoney = #{record.cMinmoney,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -250,8 +250,8 @@
       <if test="cEndtime != null" >
         C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="cMaxmoney != null" >
-        C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER},
+      <if test="cMinmoney != null" >
+        C_MinMoney = #{cMinmoney,jdbcType=INTEGER},
       </if>
       <if test="cImg != null" >
         C_Img = #{cImg,jdbcType=LONGVARCHAR},
@@ -264,7 +264,7 @@
     set S_Num = #{sNum,jdbcType=VARCHAR},
       C_Name = #{cName,jdbcType=VARCHAR},
       C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER},
+      C_MinMoney = #{cMinmoney,jdbcType=INTEGER},
       C_Img = #{cImg,jdbcType=LONGVARCHAR}
     where C_Num = #{cNum,jdbcType=VARCHAR}
   </update>
@@ -273,7 +273,7 @@
     set S_Num = #{sNum,jdbcType=VARCHAR},
       C_Name = #{cName,jdbcType=VARCHAR},
       C_EndTime = #{cEndtime,jdbcType=TIMESTAMP},
-      C_MaxMoney = #{cMaxmoney,jdbcType=INTEGER}
+      C_MinMoney = #{cMinmoney,jdbcType=INTEGER}
     where C_Num = #{cNum,jdbcType=VARCHAR}
   </update>
 </mapper>

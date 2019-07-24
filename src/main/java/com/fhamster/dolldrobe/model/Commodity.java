@@ -11,16 +11,16 @@ public class Commodity {
 
     private Date cEndtime;
 
-    private Integer cMaxmoney;
+    private Integer cMinmoney;
 
     private String cImg;
 
-    public Commodity(String cNum, String sNum, String cName, Date cEndtime, Integer cMaxmoney, String cImg) {
+    public Commodity(String cNum, String sNum, String cName, Date cEndtime, Integer cMinmoney, String cImg) {
         this.cNum = cNum;
         this.sNum = sNum;
         this.cName = cName;
         this.cEndtime = cEndtime;
-        this.cMaxmoney = cMaxmoney;
+        this.cMinmoney = cMinmoney;
         this.cImg = cImg;
     }
 
@@ -60,12 +60,12 @@ public class Commodity {
         this.cEndtime = cEndtime;
     }
 
-    public Integer getcMaxmoney() {
-        return cMaxmoney;
+    public Integer getcMinmoney() {
+        return cMinmoney;
     }
 
-    public void setcMaxmoney(Integer cMaxmoney) {
-        this.cMaxmoney = cMaxmoney;
+    public void setcMinmoney(Integer cMinmoney) {
+        this.cMinmoney = cMinmoney;
     }
 
     public String getcImg() {

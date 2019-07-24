@@ -49,29 +49,27 @@ public class FPageService {
      *
      * @param fPageCommodity 要插入收藏记录
      */
-    public void InsertFPage(FPageCommodity fPageCommodity) {
+    public void InsertFPage(FPageCommodity fPageCommodity) throws Exception {
         //获取当前日期
         Date date = new Date();
         fPageCommodity.setFgDate(date);
 
         System.out.println(fPageCommodity.getcNum());
 
+        //检查商品表参照完整性
         Commodity comTest = comdao.selectByPrimaryKey(fPageCommodity.getcNum());
-
-//        CommodityExample comExample = new CommodityExample();
-//        List<Commodity> comTest = comdao.selectByExampleWithBLOBs(comExample);
+        //检查商品表实体完整性
         FPageCommodity test = dao.selectByPrimaryKey(fPageCommodity);
-        try {
-            if (comTest == null) {
-                throw new Exception("该商品不存在");
-            }
-            if (test != null) {
-                throw new Exception("这件商品已经被收藏了");
-            }
-            dao.insertSelective(fPageCommodity);
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if (comTest == null) {
+            throw new Exception("该商品不存在");
         }
+        if (test != null) {
+            throw new Exception("这件商品已经被收藏了");
+        }
+        dao.insertSelective(fPageCommodity);
+
+
     }
 
     /**

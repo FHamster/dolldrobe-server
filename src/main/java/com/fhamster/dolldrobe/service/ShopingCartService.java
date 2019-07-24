@@ -142,7 +142,7 @@ public class ShopingCartService {
      *
      * @param cart 需要删除的购物车信息
      */
-    public void deletSC(ShoppingCart cart) {
+    public void deletSC(ShoppingCartKey cart) {
         try {
             //查询到购物车内商品信息
             if (scdao.selectByPrimaryKey(cart) == null) {

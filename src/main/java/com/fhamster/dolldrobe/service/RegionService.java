@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@Cacheable("RegionCache")
 public class RegionService {
 
     @Autowired
@@ -46,7 +47,7 @@ public class RegionService {
      * @param regionId 传入上级区域
      * @return 区域字符串 中国xx省xx市xx区
      */
-    @Cacheable("RegionCache")
+
     public String getRegionRootNameById(String regionId) {
 
         Stack<AdministrativeRegion> regionLiStack = new Stack<>();
