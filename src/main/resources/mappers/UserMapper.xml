@@ -11,8 +11,6 @@
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_RealName" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_RealID" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.fhamster.dolldrobe.model.User" >
@@ -25,8 +23,6 @@
       <arg column="U_QQ" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_WX" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_Tel" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_RealName" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="U_RealID" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="U_PicUrl" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
@@ -89,7 +85,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    U_AccountNumber, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel, U_RealName, U_RealID
+    U_AccountNumber, U_Name, U_Psw, U_Sex, U_Email, U_QQ, U_WX, U_Tel
   </sql>
   <sql id="Blob_Column_List" >
     U_PicUrl
@@ -145,12 +141,12 @@
   <insert id="insert" parameterType="com.fhamster.dolldrobe.model.User" >
     insert into user (U_AccountNumber, U_Name, U_Psw, 
       U_Sex, U_Email, U_QQ, 
-      U_WX, U_Tel, U_RealName, 
-      U_RealID, U_PicUrl)
+      U_WX, U_Tel, U_PicUrl
+      )
     values (#{uAccountnumber,jdbcType=VARCHAR}, #{uName,jdbcType=VARCHAR}, #{uPsw,jdbcType=VARCHAR}, 
       #{uSex,jdbcType=VARCHAR}, #{uEmail,jdbcType=VARCHAR}, #{uQq,jdbcType=VARCHAR}, 
-      #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{uRealname,jdbcType=VARCHAR}, 
-      #{uRealid,jdbcType=VARCHAR}, #{uPicurl,jdbcType=LONGVARCHAR})
+      #{uWx,jdbcType=VARCHAR}, #{uTel,jdbcType=VARCHAR}, #{uPicurl,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.fhamster.dolldrobe.model.User" >
     insert into user
@@ -178,12 +174,6 @@
       </if>
       <if test="uTel != null" >
         U_Tel,
-      </if>
-      <if test="uRealname != null" >
-        U_RealName,
-      </if>
-      <if test="uRealid != null" >
-        U_RealID,
       </if>
       <if test="uPicurl != null" >
         U_PicUrl,
@@ -213,12 +203,6 @@
       </if>
       <if test="uTel != null" >
         #{uTel,jdbcType=VARCHAR},
-      </if>
-      <if test="uRealname != null" >
-        #{uRealname,jdbcType=VARCHAR},
-      </if>
-      <if test="uRealid != null" >
-        #{uRealid,jdbcType=VARCHAR},
       </if>
       <if test="uPicurl != null" >
         #{uPicurl,jdbcType=LONGVARCHAR},
@@ -258,12 +242,6 @@
       <if test="record.uTel != null" >
         U_Tel = #{record.uTel,jdbcType=VARCHAR},
       </if>
-      <if test="record.uRealname != null" >
-        U_RealName = #{record.uRealname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.uRealid != null" >
-        U_RealID = #{record.uRealid,jdbcType=VARCHAR},
-      </if>
       <if test="record.uPicurl != null" >
         U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR},
       </if>
@@ -282,8 +260,6 @@
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
       U_WX = #{record.uWx,jdbcType=VARCHAR},
       U_Tel = #{record.uTel,jdbcType=VARCHAR},
-      U_RealName = #{record.uRealname,jdbcType=VARCHAR},
-      U_RealID = #{record.uRealid,jdbcType=VARCHAR},
       U_PicUrl = #{record.uPicurl,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -298,9 +274,7 @@
       U_Email = #{record.uEmail,jdbcType=VARCHAR},
       U_QQ = #{record.uQq,jdbcType=VARCHAR},
       U_WX = #{record.uWx,jdbcType=VARCHAR},
-      U_Tel = #{record.uTel,jdbcType=VARCHAR},
-      U_RealName = #{record.uRealname,jdbcType=VARCHAR},
-      U_RealID = #{record.uRealid,jdbcType=VARCHAR}
+      U_Tel = #{record.uTel,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -329,12 +303,6 @@
       <if test="uTel != null" >
         U_Tel = #{uTel,jdbcType=VARCHAR},
       </if>
-      <if test="uRealname != null" >
-        U_RealName = #{uRealname,jdbcType=VARCHAR},
-      </if>
-      <if test="uRealid != null" >
-        U_RealID = #{uRealid,jdbcType=VARCHAR},
-      </if>
       <if test="uPicurl != null" >
         U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR},
       </if>
@@ -350,8 +318,6 @@
       U_QQ = #{uQq,jdbcType=VARCHAR},
       U_WX = #{uWx,jdbcType=VARCHAR},
       U_Tel = #{uTel,jdbcType=VARCHAR},
-      U_RealName = #{uRealname,jdbcType=VARCHAR},
-      U_RealID = #{uRealid,jdbcType=VARCHAR},
       U_PicUrl = #{uPicurl,jdbcType=LONGVARCHAR}
     where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
@@ -363,9 +329,7 @@
       U_Email = #{uEmail,jdbcType=VARCHAR},
       U_QQ = #{uQq,jdbcType=VARCHAR},
       U_WX = #{uWx,jdbcType=VARCHAR},
-      U_Tel = #{uTel,jdbcType=VARCHAR},
-      U_RealName = #{uRealname,jdbcType=VARCHAR},
-      U_RealID = #{uRealid,jdbcType=VARCHAR}
+      U_Tel = #{uTel,jdbcType=VARCHAR}
     where U_AccountNumber = #{uAccountnumber,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -17,13 +17,9 @@ public class User {
 
     private String uTel;
 
-    private String uRealname;
-
-    private String uRealid;
-
     private String uPicurl;
 
-    public User(String uAccountnumber, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uRealname, String uRealid, String uPicurl) {
+    public User(String uAccountnumber, String uName, String uPsw, String uSex, String uEmail, String uQq, String uWx, String uTel, String uPicurl) {
         this.uAccountnumber = uAccountnumber;
         this.uName = uName;
         this.uPsw = uPsw;
@@ -32,8 +28,6 @@ public class User {
         this.uQq = uQq;
         this.uWx = uWx;
         this.uTel = uTel;
-        this.uRealname = uRealname;
-        this.uRealid = uRealid;
         this.uPicurl = uPicurl;
     }
 
@@ -103,22 +97,6 @@ public class User {
 
     public void setuTel(String uTel) {
         this.uTel = uTel == null ? null : uTel.trim();
-    }
-
-    public String getuRealname() {
-        return uRealname;
-    }
-
-    public void setuRealname(String uRealname) {
-        this.uRealname = uRealname == null ? null : uRealname.trim();
-    }
-
-    public String getuRealid() {
-        return uRealid;
-    }
-
-    public void setuRealid(String uRealid) {
-        this.uRealid = uRealid == null ? null : uRealid.trim();
     }
 
     public String getuPicurl() {
