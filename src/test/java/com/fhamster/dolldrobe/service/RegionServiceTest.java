@@ -25,7 +25,7 @@ public class RegionServiceTest {
         AdministrativeRegion region = new AdministrativeRegion();
         region.setArNum("1263");
 
-        System.out.println(service.getRegionRootNameById(region.getArNum()));
+//        System.out.println(service.getRegionRootNameById(region.getArNum()));
 
     }
 }
